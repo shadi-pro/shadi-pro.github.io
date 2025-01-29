@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://shadi-pro.github.io/portfolio",
+  "homepage": "https://shadi-pro.github.io/shadi-pro.github.io",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
