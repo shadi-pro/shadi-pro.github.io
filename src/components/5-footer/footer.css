@@ -1,0 +1,77 @@
+ /* Formating file for ['Footer']  component */
+
+
+ /* =========================
+    Table of Design
+ ============================
+    1. Left section => list of links      
+    2. Right section => paragraph        
+    3. Responsive Design Media qurey  
+ */
+
+ /* =================================
+    1. Left section => list of links  
+   ==================================
+ */
+
+
+footer.flex { 
+    justify-content : space-between ;
+    padding-bottom :  2rem ;
+}
+
+
+footer.flex ul { 
+    justify-content : space-between ;
+    gap: 1rem ;
+}
+
+footer.flex ul a { 
+    color : var(--subtitle) ;
+    font-size: .9rem ;
+    transition: .3s ;
+     
+}
+
+footer.flex ul a:hover { 
+    color : var(--blue) ;
+    font-size: 1rem ;
+    font-weight : 500 ;
+}
+/* ---------------------------------- */
+
+
+
+/* =================================
+    2. Right section => paragraph        
+   =================================
+ */
+
+footer.flex p {
+    color : rgb(113 113 122) 
+} 
+/* ------------------------------ */
+
+
+
+ /* ===================================
+   3.  Responsive Design Media qurey  
+  =====================================
+*/
+
+@media (max-width: 800px) {
+    footer.flex {
+        flex-direction: column ;
+        gap: 2rem ;  
+        align-items: center ;
+    } 
+
+}
+
+
+@media (min-width:1890px) {
+    footer.flex {
+        justify-content: center;
+        gap: 3rem;
+    }
+ }

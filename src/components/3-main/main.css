@@ -1,0 +1,195 @@
+ /* Formating file for ['Main']  component */
+
+
+ /* =========================
+    Tabel of Design
+    =========================
+    1.  Main Container => Genearal formating  
+    2.  Left section   => buttons
+    3.  Right  section => Projects Cards
+    4.  Media qurey  => 
+     
+*/
+
+
+ /* =========================
+   1.  Main Container  
+  =========================
+*/
+
+ .border {
+     border: 1px solid red
+ }
+
+ main.flex {
+     gap            : 2rem;
+     align-items    : start;
+     justify-content: space-between;
+ }
+
+
+
+ /* =========================
+   2.  Left section => buttons 
+  =========================
+*/
+
+ main section.left-section.flex {
+     flex-direction: column;
+     gap           : 10px;
+     margin-left   : -25px;
+ }
+
+ main section.left-section.flex button {
+     background-color: rgba(36, 37, 46, 1);
+     width           : 11rem;
+     padding         : .75rem 0;
+     text-align      : center;
+     text-transform  : capitalize;
+     font-size       : 1.05rem;
+     border-radius   : 5px;
+     opacity         : 0.5;
+     transition      : all .3s
+ }
+
+ main section.left-section.flex button:hover {
+     opacity: 1;
+ }
+
+ main section.left-section.flex button.active {
+     letter-spacing: .6px;
+     opacity       : 1;
+     font-weight   : bold;
+     padding       : .85rem 0;
+     border        : 1px solid var(--blue);
+ }
+
+ .light main section.left-section.flex button.active {
+     border: 1px solid #000;
+ }
+
+
+
+ /* =====================================
+   3.  Right  section =>   Projects Cards  
+  =======================================
+*/
+
+
+ main section.right-section.flex {
+     flex-wrap      : wrap;
+     flex-grow      : 1;
+     justify-content: center;
+
+     /* gap = column-gap + row-gap   */
+     column-gap: 15px;
+     row-gap   : 16px;
+ }
+
+
+ .card {
+     border       : 1px solid rgba(93, 188, 252, 0.3);
+     box-shadow: -3px 3px 3px rgba(0,  0, 0 , 0.16)  , 3px 3px 3px rgba(0,  0, 0 , 0.16);
+     transition   : all .3s;
+     border-radius: 5px;
+     background-image: linear-gradient(rgba(255, 255, 255, .05),
+             rgba(255, 255, 255, .05));
+ }
+
+ .light .card , .light .card:hover  {
+     border: none;
+ }
+
+ .card:hover {
+     border: 1px solid var(--blue);
+     background-color :  rgba( 39 , 39 , 42 , 0.1 ) ;
+     rotate: 1deg;
+     scale : 1.01;
+     cursor: pointer;
+ }
+
+ .card img {
+     border-radius: 5px;
+ }
+
+ .card .box {
+     padding: 1rem .4rem;
+ }
+
+ .card .box .title {
+     color         : var(--title);
+     text-transform: capitalize;
+     text-align    : center;
+ }
+
+ .card .box .sub-title {
+     color        : var(--subtitle);
+     font-size    : .8rem;
+     margin-top   : .7rem;
+     margin-bottom: 1rem;
+ }
+
+
+ .card .box .icons {
+     justify-content: space-between;
+ }
+
+ .card .icon-github,
+ .card .icon-link {
+     font-size : 1.2rem;
+     color     : var(--subtitle);
+     transition: all .3s;
+ }
+
+ .card .icon-github:hover,
+ .card .icon-link:hover {
+     font-size: 1.25rem;
+     color    : var(--icon-hover);
+     cursor   : pointer;
+ }
+
+
+ .card a.link {
+     font-size   : .9rem;
+     color       : var(--blue);
+     margin-right: 12px;
+ }
+
+ /* ------------------------------------ */
+
+
+ /* =====================================
+   4.  Media qurey =>   
+  =======================================
+*/
+
+ @media (max-width:600px) {
+     main.flex {
+         flex-direction: column;
+         align-items   : center;
+     }
+
+     main section.left-section.flex {
+         flex-direction : row;
+         flex-wrap      : wrap;
+         justify-content: center;
+
+     }
+
+
+     main section.left-section.flex button {
+         width    : 7rem;
+         padding  : .8rem 0;
+         font-size: .9rem;
+
+     }
+
+ }
+
+
+ @media (min-width:1890px) {
+     main.flex {
+         gap            : 10rem;
+         justify-content: center;
+     }
+ }

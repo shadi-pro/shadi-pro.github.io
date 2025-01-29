@@ -1,0 +1,229 @@
+ /* Formating file for ['Header']  component      */
+
+ /* =========================
+    Tabel of Design
+    =========================
+    1. Header Design 
+    2. Button & icon 
+    3. Modal == pop up
+    4. Responsive Design (media query)
+*/
+
+
+ /* =========================
+    1. Header Design
+   =========================
+*/
+
+ /* [Main Header component] Css properties   */
+ header.flex {
+     justify-content: space-between;
+     padding        : 0 2.4rem;
+     margin-top     : 1.2rem;
+ }
+
+ /* ---------------------- */
+
+
+ /* [ Header  nav element] Css properties   */
+ header.flex nav {
+     background-color: var(--bgHeader);
+     padding         : .77rem 1.6rem;
+     border-radius   : 55px;
+     box-shadow      : 1px 1px 4px rgb(49, 48, 48);
+ }
+
+ /* [Header  ul that has class name of 'flex' ] CSS proreprties   */
+ header ul.flex {
+     gap: 16px;
+ }
+
+ /* -------------------------- */
+
+ /*  [Any link inside the ul menu inside the header container] CSS properties   */
+ header ul li a {
+     color      : var(--title);
+     opacity    : .9;
+     font-size  : .88rem;
+     font-weight: 500;
+ }
+
+ /* hover effect */
+ header ul li a:hover {
+     color    : var(--blue);
+     opacity  : 1;
+     font-size: .9rem;
+ }
+
+ /* --------------------- */
+
+ /* contorling the button inside the header   */
+ header button {
+     font-size: 1.2rem
+ }
+
+ /* ----------------------- */
+
+ header button.menu {
+     display: none
+ }
+
+ /* ----------------------------- */
+
+ /* creating a new class as [indicator]  */
+ .border {
+     border: 1px solid red;
+ }
+
+ /* ------------------------------------------------------- */
+
+ /* =========================
+    2. Button & icon
+   ==========================
+*/
+
+ /* Icon button */
+ header .icon-menu,
+ header button.mode {
+     background-color: var(--bgHeader);
+     height          : 2.4rem;
+     width           : 2.4rem;
+     border-radius   : 50%;
+
+     align-items    : center;
+     justify-content: center;
+     text-align     : center;
+     color          : var(--subtitle);
+     border         : 1px solid rgba(244, 165, 96, 0.249);
+     transition     : .2s;
+     box-shadow : 1px 1px 40px rgba(35 , 35  , 36 , 0.3 )  ;
+ }
+
+header .icon-sun  { 
+    color : rgba( 255 , 156 , 0 ) ;
+
+}    
+
+
+ header .icon-menu:hover,
+ header button.mode:hover {
+     color : var(--title);
+     border: 1px solid rgba(244, 165, 96, 0.249);
+ }
+
+ /* --------------------------------- */
+
+ header .icon-close {
+     font-size : 1.5rem;
+     color     : var(--subtitle);
+     transition: 0.3s;
+ }
+
+ header .icon-close:hover {
+     font-size: 1.7rem;
+     color    : crimson;
+     rotate   : 180deg;
+ }
+
+ /* -------------------------------------------------------- */
+
+
+
+
+ /* =========================
+    3. Modal == pop up
+   =========================
+*/
+
+ header .fixed {
+     position        : fixed;
+     inset           : 0;
+     z-index         : 11;
+     background-color: rgba(40, 40, 57, .91);
+     backdrop-filter:  blur(4px) ;
+ }
+
+ /* ------------------- */
+
+ /* Creating Anmiation of the next element [modal == pop up]  */
+ @keyframes popup {
+     0% {
+         scale: 0
+     }
+
+     60% {
+         scale: 1.2
+     }
+
+     100% {
+         scale: 1
+     }
+ }
+
+ /* -------------------- */
+
+ header .fixed ul.modal {
+     Width           : 75%;
+     margin-left     : auto;
+     margin-right    : auto;
+     margin-top      : 2rem;
+     border-radius   : 1rem;
+     padding         : 1rem 2rem;
+     background-color: var(--secondary);
+     animation       : popup 1s 1;
+ }
+
+
+ header .fixed ul.modal li {
+     border-bottom : 1px solid var(--border);
+     padding-bottom: .77rem;
+     padding-top   : .5rem;
+ }
+
+
+ header .fixed ul.modal li:last-child {
+     border: none
+ }
+
+
+ header .fixed ul.modal li a {
+     font-size: 1rem;
+ }
+
+
+ header .fixed ul.modal li:first-child {
+     text-align    : right;
+     border        : none;
+     padding-bottom: 0;
+     padding-top   : 0.2rem;
+     margin-bottom : -1rem
+ }
+
+ /* ---------------------------------------------------- */
+
+ /* ====================================
+    4. Responsive Design (media query) 
+   ====================================
+*/
+
+ /*  Creating media query of the header [ to Hide the main [Shortcut menu Icon] within  the large screens   , and show it only wihtin the small screens  ] */
+ @media (max-width:700px) {
+     header.flex nav {
+         display: none
+     }
+
+     header button.menu {
+         display: block
+     }
+ }
+
+
+ @media (min-width:1890px) {
+     header.flex {
+        justify-content: center;
+     }
+ 
+ }
+
+
+ 

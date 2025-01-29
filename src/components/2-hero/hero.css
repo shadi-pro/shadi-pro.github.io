@@ -1,0 +1,113 @@
+ /* Formating file for ['Hero']  component      */
+
+ /* =========================
+    Table of Design
+    =========================
+    1. Hero Design 
+    2. Left Section 
+    3. Right Section => Animation    
+    4.  
+*/
+
+ /* section Hero  */
+
+ section.hero {
+     margin-top: 2rem;
+ }
+
+
+ /* =================================
+    1. Left Section
+   =================================
+*/
+
+ section.hero .parent-avatar.flex {
+     align-items: end;
+     gap        : .6rem;
+     min-height        : 88px ;
+ }
+
+ section.hero .left-section {
+     flex-grow: 1;
+ }
+
+ section.hero .icon-verified {
+     color        : var(--blue);
+     font-size    : 1.1rem;
+     margin-bottom: 0.3rem;
+ }
+
+
+ section.hero .avatar {
+     width        : 88px;
+     border-radius: 50%;
+     border       : 1px solid darkorange;
+     padding      : 1px;
+     box-shadow   : 1px 1px 40px rgba(203, 200, 200, .586) inset;
+ }
+
+ section.hero h1.title {
+     font-size  : 2.85rem;
+     line-height: 3.3rem;
+     margin     : 24px 0;
+     color      : var(--title);
+ }
+
+ section.hero p.sub-title {
+     color        : var(--subtitle);
+     font-size    : .9rem;
+     line-height  : 1.65rem;
+     margin-bottom: 32px;
+ }
+
+
+ section.hero .all-icons {
+     gap      : 10px;
+     font-size: 1.3rem;
+     color    : var(--subtitle);
+ }
+
+
+ section.hero .all-icons .icon {
+     transition: 0.35s;
+ }
+
+
+ section.hero .all-icons .icon:hover {
+     font-size: 1.4rem;
+     color    : var(--icon-hover);
+     cursor   : pointer;
+ }
+
+ /* ================================================= */
+
+
+ /* =================================
+    2. Right Section => Animation 
+   =================================
+ */
+ .animation {
+   width: 50% ; 
+   translate: 70px 0px; 
+ }
+
+
+
+
+
+ /* =================================
+    3.  Media Query =>  
+   =================================
+*/
+    @media (min-width:1890px) {
+        section.hero {
+            justify-content: center;
+        }
+    }
+
+
+    @media (max-width:1250px) {
+        section.hero .animation {
+            display: none;
+        }
+    }
