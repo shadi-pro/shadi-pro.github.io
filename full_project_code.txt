@@ -1,0 +1,4746 @@
+===================== 
+FILE: %f 
+===================== 
+======== CLIENT (React) ======== 
+----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\App.js 
+----------------------------- 
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import Home from './pages/Home';
+import ProjectDetail from './pages/ProjectDetail';
+import GoToTop from './components/GoToTop'; 
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
+          </Routes>
+          <GoToTop />
+        </div>
+      </Router>
+    </ThemeProvider>
+  );
+}
+
+export default App;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\App.test.js 
+----------------------------- 
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\index.js 
+----------------------------- 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from './context/ThemeContext';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
+);----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\reportWebVitals.js 
+----------------------------- 
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\setupTests.js 
+----------------------------- 
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\App.css 
+----------------------------- 
+/* ===== Professional Portfolio Design ===== */
+:root {
+  --primary-color: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #7c3aed;
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+
+  /* Light theme variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Dark Theme Variables ===== */
+[data-theme="dark"] {
+  --primary-color: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+  --secondary-color: #8b5cf6;
+
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --card-bg: #1e293b;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* ===== Basics ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-primary { color: var(--primary-color) !important; }
+.text-success { color: var(--success-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+
+/* ===== Professional Navbar ===== */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 15px 0;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--primary-color) !important;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  color: var(--primary-light) !important;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin: 0 10px;
+  color: var(--text-primary) !important;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  transition: var(--transition);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border-color: var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+  background: var(--gradient-dark);
+  color: white;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section h1,
+.hero-section h2,
+.hero-section h4,
+.hero-section p {
+  color: white;
+}
+
+.hero-section .text-warning {
+  color: #fbbf24 !important;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ===== Enhanced Buttons ===== */
+.btn-custom {
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.btn-custom:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+  color: white !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+  color: white !important;
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-color);
+  color: white !important;
+}
+
+.btn-outline-light {
+  border: 2px solid white;
+  background: transparent;
+  color: white !important;
+}
+
+.btn-outline-light:hover {
+  background: white;
+  color: var(--primary-color) !important;
+}
+
+.btn-success {
+  background: var(--gradient-success);
+  color: white !important;
+}
+
+/* ===== Enhanced Project Cards ===== */
+.project-card-enhanced {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  height: 100%;
+  position: relative;
+}
+
+.project-card-enhanced:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.project-card-header {
+  position: relative;
+  padding: 30px 20px;
+  text-align: center;
+  overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.floating-metrics {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: flex;
+  gap: 5px;
+}
+
+.metric-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: floatBadge 3s ease-in-out infinite;
+  color: #1e293b !important;
+}
+
+.metric-badge.bg-warning {
+  background: #fbbf24 !important;
+}
+
+.metric-badge.bg-info {
+  background: var(--primary-color) !important;
+  color: white !important;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.quick-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.stat-icon {
+  color: var(--primary-color);
+  margin-bottom: 3px;
+  font-size: 1.1rem;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.project-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.architecture-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.architecture-section .badge {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  padding: 5px 10px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.feature-list {
+  font-size: 0.9rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.feature-bullet {
+  color: var(--success-color);
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.feature-text {
+  color: var(--text-secondary);
+}
+
+.more-features {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: help;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tech-badge-enhanced {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+.tech-badge-enhanced:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: var(--primary-color) !important;
+  color: white !important;
+}
+
+.complexity-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.complexity-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.complexity-stars {
+  color: #fbbf24;
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.action-btn.btn-outline-primary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.action-btn.btn-outline-primary:hover {
+  background: var(--primary-color);
+  color: white !important;
+}
+
+.action-btn.btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.action-btn.btn-success {
+  background: var(--success-color);
+  border-color: var(--success-color);
+}
+
+/* ===== Skills Section ===== */
+.skills-section {
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.skill-item {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.skill-item h5 {
+  color: var(--text-primary);
+}
+
+.progress {
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--bg-tertiary);
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: var(--gradient-primary);
+  border-radius: 5px;
+}
+
+/* ===== About Section ===== */
+#about {
+  background: var(--bg-secondary) !important;
+}
+
+#about h2,
+#about h5,
+#about strong {
+  color: var(--text-primary);
+}
+
+#about p {
+  color: var(--text-secondary);
+}
+
+#about .list-unstyled li {
+  color: var(--text-secondary);
+}
+
+.about-image-container {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  opacity: 0.85;
+  transition: all 0.4s ease;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+}
+
+.about-img:hover {
+  opacity: 1;
+  transform: scale(1.03);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* ===== Contact Form ===== */
+#contact-form {
+  background: var(--bg-primary);
+}
+
+#contact-form .bg-white {
+  background: var(--card-bg) !important;
+}
+
+#contact-form h2,
+#contact-form .form-label {
+  color: var(--text-primary) !important;
+}
+
+#contact-form .form-control {
+  background-color: var(--bg-tertiary) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#contact-form .form-control:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+#contact-form .form-control::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.7;
+}
+
+#contact-form .text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Form validation */
+#contact-form .is-invalid {
+  border-color: var(--danger-color) !important;
+}
+
+#contact-form .invalid-feedback {
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+/* Alerts */
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--gradient-dark);
+  color: white;
+  padding: 50px 0 20px;
+}
+
+.footer h3,
+.footer p {
+  color: white !important;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  margin: 0 10px;
+  transition: var(--transition);
+  color: white !important;
+}
+
+.social-icons a:hover {
+  background: var(--primary-color);
+  transform: translateY(-5px);
+  color: white !important;
+}
+
+/* ===== Profile Image Styles ===== */
+.profile-image-container {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  background: var(--gradient-primary);
+  margin: 0 auto;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.5s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+.profile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.profile-placeholder .initials {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* ===== Floating Tech Badges ===== */
+.floating-badge {
+  position: absolute;
+  background: var(--card-bg);
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--box-shadow-hover);
+  animation: float 6s ease-in-out infinite;
+  z-index: 10;
+  color: var(--text-primary);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.flutter-badge {
+  top: 40px;
+  right: -30px;
+  background: linear-gradient(135deg, #02569B 0%, #13B9FD 100%);
+  color: white !important;
+  animation-delay: 0s;
+}
+
+.react-badge {
+  bottom: 60px;
+  left: -40px;
+  background: linear-gradient(135deg, #61DAFB 0%, #2D79C7 100%);
+  color: #282C34 !important;
+  animation-delay: 2s;
+}
+
+.node-badge {
+  bottom: 40px;
+  right: -20px;
+  background: linear-gradient(135deg, #339933 0%, #8CC84B 100%);
+  color: white !important;
+  animation-delay: 4s;
+}
+
+/* ===== Social Links ===== */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.social-link:hover {
+  background: var(--primary-color);
+  transform: translateY(-5px);
+  border-color: white;
+  color: white !important;
+}
+
+[data-theme="dark"] .social-link {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== Go to Top Button ===== */
+.go-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white !important;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.go-to-top-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}
+
+/* ===== Timeline Styles ===== */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -34px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.timeline-content {
+  padding-left: 20px;
+}
+
+/* ===== Cards and Containers ===== */
+.bg-white {
+  background: var(--card-bg) !important;
+}
+
+.bg-light {
+  background: var(--bg-secondary) !important;
+}
+
+.shadow-sm {
+  box-shadow: var(--box-shadow) !important;
+}
+
+.border-top {
+  border-top-color: var(--border-color) !important;
+}
+
+/* ===== Filter Buttons ===== */
+.btn-outline-primary.rounded-pill {
+  border-radius: 50px !important;
+  padding: 8px 20px;
+}
+
+.btn-outline-primary.rounded-pill.active,
+.btn-outline-primary.rounded-pill:hover {
+  background: var(--primary-color);
+  color: white !important;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .display-5 {
+    font-size: 2.5rem;
+  }
+
+  .profile-image-container {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-custom {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .profile-image-container {
+    width: 280px;
+    height: 280px;
+    border-width: 6px;
+  }
+
+  .floating-badge {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .flutter-badge {
+    top: 30px;
+    right: -20px;
+  }
+
+  .react-badge {
+    bottom: 40px;
+    left: -25px;
+  }
+
+  .node-badge {
+    bottom: 25px;
+    right: -10px;
+  }
+
+  .go-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .quick-stats {
+    font-size: 0.8rem;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-image-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-section {
+    padding: 70px 0;
+  }
+
+  .profile-placeholder .initials {
+    font-size: 3rem;
+  }
+
+  .floating-metrics {
+    flex-direction: column;
+  }
+}
+
+/* ===== Filter Panel Styles ===== */
+.filter-panel {
+  position: sticky;
+  top: 100px;
+}
+
+.filter-card {
+  border: none;
+  border-radius: 20px;
+  background: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.clear-filter {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+.clear-filter:hover {
+  color: var(--primary-dark);
+}
+
+.filter-section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-option {
+  margin-bottom: 8px;
+}
+
+.filter-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: none;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateX(5px);
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.filter-icon {
+  margin-right: 10px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.filter-btn.active .filter-icon {
+  opacity: 1;
+}
+
+.filter-btn:hover .filter-icon {
+  opacity: 1;
+}
+
+/* ===== Compact Project Cards ===== */
+.project-card-compact {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  height: 100%;
+}
+
+.project-card-compact:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.compact-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.rating-badge {
+  font-size: 0.7rem;
+  padding: 3px 6px;
+}
+
+.compact-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.compact-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.compact-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tech-dot {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+.compact-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.stat-mini {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.compact-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.compact-btn {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compact-btn.btn-outline-primary {
+  width: 32px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .filter-panel {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 15px;
+    right: 15px;
+    z-index: 1000;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .filter-panel.show {
+    display: block;
+  }
+
+  .filter-card {
+    border-radius: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .filter-panel {
+    display: block !important;
+  }
+}
+
+/* ============================================= */
+/* FINAL DARK MODE FIX - PROJECT DETAIL READABLE TEXT */
+/* ============================================= */
+
+.project-detail-page.dark-mode-active {
+  color: #f0f4f8 !important;
+  background: #0f172a !important;
+}
+
+.project-detail-page.dark-mode-active *,
+.project-detail-page.dark-mode-active h1,
+.project-detail-page.dark-mode-active h2,
+.project-detail-page.dark-mode-active h3,
+.project-detail-page.dark-mode-active h4,
+.project-detail-page.dark-mode-active h5,
+.project-detail-page.dark-mode-active h6,
+.project-detail-page.dark-mode-active p,
+.project-detail-page.dark-mode-active span,
+.project-detail-page.dark-mode-active div,
+.project-detail-page.dark-mode-active small,
+.project-detail-page.dark-mode-active .stat-label,
+.project-detail-page.dark-mode-active .text-muted,
+.project-detail-page.dark-mode-active .tab-content p,
+.project-detail-page.dark-mode-active .tab-content h4,
+.project-detail-page.dark-mode-active .tab-content h5,
+.project-detail-page.dark-mode-active .card-body,
+.project-detail-page.dark-mode-active .stat-value {
+  color: #f0f4f8 !important;
+}
+
+.project-detail-page.dark-mode-active .text-muted,
+.project-detail-page.dark-mode-active small {
+  color: #cbd5e1 !important;
+}
+
+.project-detail-page.dark-mode-active .stat-value {
+  color: #ffffff !important;
+}
+
+.project-detail-page.dark-mode-active .card,
+.project-detail-page.dark-mode-active .detail-card,
+.project-detail-page.dark-mode-active .stat-card,
+.project-detail-page.dark-mode-active .sidebar-card,
+.project-detail-page.dark-mode-active .tab-content,
+.project-detail-page.dark-mode-active .card-body,
+.project-detail-page.dark-mode-active .bg-light {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f0f4f8 !important;
+}
+
+.project-detail-page.dark-mode-active .bg-light {
+  background: #334155 !important;
+}
+
+/* Override any stubborn Bootstrap classes */
+.project-detail-page.dark-mode-active .bg-white,
+.project-detail-page.dark-mode-active [class*="bg-"] {
+  background: #1e293b !important;
+}
+
+/* Header always readable */
+.project-detail-header,
+.project-detail-header * {
+  color: white !important;
+}
+
+
+
+/* ============================================= */
+/* FIX ACTIVE TAB IN DARK MODE - ProjectDetail   */
+/* ============================================= */
+
+/* Make active tab clearly visible in dark mode */
+.project-detail-page.dark-mode-active .nav-tabs .nav-link.active,
+.project-detail-page.dark-mode-active .nav-tabs .nav-item.show .nav-link {
+  color: #ffffff !important;               /* أبيض قوي */
+  background-color: #3b82f6 !important;    /* لون أزرق غامق جذاب */
+  border-bottom: 3px solid #60a5fa !important;  /* خط تحت أزرق فاتح */
+  border-color: #60a5fa !important;
+}
+
+/* Active tab hover/focus state */
+.project-detail-page.dark-mode-active .nav-tabs .nav-link.active:hover,
+.project-detail-page.dark-mode-active .nav-tabs .nav-link.active:focus {
+  background-color: #2563eb !important;
+  border-bottom-color: #93c5fd !important;
+}
+
+/* Normal tabs in dark mode (non-active) */
+.project-detail-page.dark-mode-active .nav-tabs .nav-link {
+  color: #cbd5e1 !important;               /* رمادي فاتح */
+  border-color: transparent !important;
+}
+
+/* Tab content background (just in case) */
+.project-detail-page.dark-mode-active .tab-content {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334155 !important;
+  border-top: none !important;
+}----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\index.css 
+----------------------------- 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+ ----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\AnimatedCard.js 
+----------------------------- 
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Card } from 'react-bootstrap';
+
+const AnimatedCard = ({ children, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 50 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{ 
+        y: -10,
+        transition: { duration: 0.2 }
+      }}
+    >
+      <Card className="project-card h-100">
+        {children}
+      </Card>
+    </motion.div>
+  );
+};
+
+export default AnimatedCard;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\AnimatedSection.js 
+----------------------------- 
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const AnimatedSection = ({ children, delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default AnimatedSection;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ContactForm.js 
+----------------------------- 
+// E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ContactForm.js
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import emailjs from '@emailjs/browser';
+import { FaPaperPlane, FaCheck, FaExclamationTriangle, FaUser, FaEnvelope, FaComment, FaLinkedin } from 'react-icons/fa';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+
+// Form validation schema
+const schema = yup.object({
+  name: yup.string().required('Name is required').min(2, 'Name must be at least 2 characters'),
+  email: yup.string().required('Email is required').email('Invalid email address'),
+  message: yup.string().required('Message is required').min(10, 'Message must be at least 10 characters'),
+});
+
+const ContactForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Your EmailJS credentials
+      const serviceID = 'service_f90500m';     // Your Service ID
+      const templateID = 'template_yp02wml';   // Your Template ID
+      const publicKey = 'EXhhx0bTROCrQbqHN';   // Your Public Key
+
+      // ✅ CORRECT parameters based on your template configuration [mathcing with emailJS service provider ] 
+      const templateParams = {
+        from_name: data.name,           // Your template uses {{from_name}}
+        reply_to: data.email,            // Your template uses {{reply_to}}
+        title: "New Portfolio Message",  // Your template uses {{title}} in subject line
+        message: data.message,           // You need to add this to your template content!
+        // Note: to_email is set in template, don't need to send it
+      };
+
+      console.log('Sending with params:', templateParams); // For debugging
+
+      // Send the email using EmailJS
+      const response = await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      console.log('Success:', response); // For debugging
+      
+      // Success!
+      setSubmitStatus('success');
+      reset(); // Clear the form
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      console.log('Error details:', {
+        message: error.message,
+        text: error.text,
+        status: error.status
+      });
+      setSubmitStatus('error');
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <section className="py-5" id="contact-form">
+      <Container>
+        <Row className="justify-content-center">
+          <Col lg={8}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-4 shadow-lg p-4 p-md-5"
+            >
+              <div className="text-center mb-5">
+                <h2 className="display-6 fw-bold mb-3">Get In Touch</h2>
+                <p className="text-muted">
+                  Have a project in mind? Let's discuss how we can work together!
+                </p>
+              </div>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <Alert variant="success" className="d-flex align-items-center">
+                  <FaCheck className="me-2" />
+                  Message sent successfully! I'll get back to you soon.
+                </Alert>
+              )}
+
+              {submitStatus === 'error' && (
+                <Alert variant="danger" className="d-flex align-items-center">
+                  <FaExclamationTriangle className="me-2" />
+                  Failed to send message. Please try again or email me directly.
+                </Alert>
+              )}
+
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <Row>
+                  <Col md={6} className="mb-4">
+                    <Form.Group controlId="formName">
+                      <Form.Label className="fw-semibold">
+                        <FaUser className="me-2" />
+                        Your Name
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter your name"
+                        {...register('name')}
+                        className={`py-3 ${errors.name ? 'is-invalid' : ''}`}
+                        disabled={isSubmitting}
+                      />
+                      {errors.name && (
+                        <div className="invalid-feedback d-block">
+                          {errors.name.message}
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+
+                  <Col md={6} className="mb-4">
+                    <Form.Group controlId="formEmail">
+                      <Form.Label className="fw-semibold">
+                        <FaEnvelope className="me-2" />
+                        Email Address
+                      </Form.Label>
+                      <Form.Control
+                        type="email"
+                        placeholder="Enter your email"
+                        {...register('email')}
+                        className={`py-3 ${errors.email ? 'is-invalid' : ''}`}
+                        disabled={isSubmitting}
+                      />
+                      {errors.email && (
+                        <div className="invalid-feedback d-block">
+                          {errors.email.message}
+                        </div>
+                      )}
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <div className="mb-4">
+                  <Form.Group controlId="formMessage">
+                    <Form.Label className="fw-semibold">
+                      <FaComment className="me-2" />
+                      Your Message
+                    </Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={6}
+                      placeholder="Tell me about your project..."
+                      {...register('message')}
+                      className={`py-3 ${errors.message ? 'is-invalid' : ''}`}
+                      disabled={isSubmitting}
+                    />
+                    {errors.message && (
+                      <div className="invalid-feedback d-block">
+                        {errors.message.message}
+                      </div>
+                    )}
+                  </Form.Group>
+                </div>
+
+                <div className="text-center">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    className="btn-custom px-5 py-3"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <FaPaperPlane className="me-2" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </Form>
+
+              {/* Alternative Contact Info */}
+              <div className="mt-5 pt-4 border-top text-center">
+                <p className="text-muted mb-2">Prefer direct contact?</p>
+                <div className="d-flex justify-content-center gap-4">
+                  <a href="mailto:shadisayed.6890@gmail.com" className="text-decoration-none">
+                    <Button variant="outline-primary" size="sm">
+                      <FaEnvelope className="me-2" />
+                      Email Me Directly
+                    </Button>
+                  </a>
+                  <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="text-decoration-none">
+                    <Button variant="outline-primary" size="sm">
+                      <FaLinkedin className="me-2" />
+                      LinkedIn
+                    </Button>
+                  </a>
+                </div>
+                <p className="text-muted mt-3 small">
+                  <FaEnvelope className="me-1" /> shadisayed.6890@gmail.com
+                </p>
+              </div>
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default ContactForm;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\GoToTop.js 
+----------------------------- 
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaArrowUp } from 'react-icons/fa';
+
+const GoToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Scroll to top smoothly
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          className="go-to-top-btn"
+          onClick={scrollToTop}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+          aria-label="Go to top"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <FaArrowUp />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default GoToTop;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\Header.js 
+----------------------------- 
+import React from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+
+const Header = () => {
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+      <Container>
+        <Navbar.Brand href="/">
+          <i className="fas fa-code me-2"></i>
+          My Portfolio
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link href="/">الرئيسية</Nav.Link>
+            <Nav.Link href="#projects">المشاريع</Nav.Link>
+            <Nav.Link href="#skills">المهارات</Nav.Link>
+            <Nav.Link href="#contact">تواصل</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default Header;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ProjectCard.js 
+----------------------------- 
+// src/components/ProjectCard.js - Enhanced Version
+import React, { useState } from 'react';
+import { Card, Badge, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { FaGithub, FaEye, FaStar, FaDownload, FaChartLine, FaCode, FaUsers, FaRocket, FaDatabase, FaShieldAlt, FaBolt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import './ProjectCard.css'; // We'll create this
+
+const ProjectCard = ({ project }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Helper to render complexity stars
+  const renderComplexity = (level) => {
+    return '⭐'.repeat(level) + '☆'.repeat(5-level);
+  };
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <Card className="project-card-enhanced h-100">
+        {/* Header with Gradient */}
+        <div 
+          className="card-header-gradient" 
+          style={{ background: project.gradient }}
+        >
+          <div className="header-content">
+            <FaMobileAlt size={40} className="text-white mb-2" />
+            <h3 className="text-white mb-0">{project.title}</h3>
+          </div>
+          
+          {/* Floating Metrics Badges */}
+          <div className="floating-metrics">
+            {project.metrics && (
+              <>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>App Store Rating</Tooltip>}
+                >
+                  <Badge bg="warning" text="dark" className="metric-badge">
+                    <FaStar className="me-1" /> {project.metrics.rating}
+                  </Badge>
+                </OverlayTrigger>
+                
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>Downloads</Tooltip>}
+                >
+                  <Badge bg="success" className="metric-badge">
+                    <FaDownload className="me-1" /> {project.metrics.downloads}
+                  </Badge>
+                </OverlayTrigger>
+              </>
+            )}
+          </div>
+        </div>
+
+        <Card.Body>
+          {/* Quick Stats Row */}
+          <div className="quick-stats mb-3">
+            <div className="stat-item" title="Active Users">
+              <FaUsers className="stat-icon" />
+              <span className="stat-value">{project.metrics?.users || 'N/A'}</span>
+            </div>
+            <div className="stat-item" title="Performance">
+              <FaBolt className="stat-icon" />
+              <span className="stat-value">{project.metrics?.performance || 'N/A'}</span>
+            </div>
+            <div className="stat-item" title="Code Coverage">
+              <FaShieldAlt className="stat-icon" />
+              <span className="stat-value">{project.metrics?.codeCoverage || 'N/A'}</span>
+            </div>
+          </div>
+
+          {/* Description */}
+          <Card.Text className="project-description">
+            {project.shortDesc}
+          </Card.Text>
+
+          {/* Architecture Highlights */}
+          {project.architecture && (
+            <div className="architecture-section mb-3">
+              <h6 className="section-title">
+                <FaDatabase className="me-2" /> Architecture
+              </h6>
+              <div className="arch-badges">
+                <Badge bg="info" className="me-1 mb-1">
+                  {project.architecture.pattern}
+                </Badge>
+                <Badge bg="secondary" className="me-1 mb-1">
+                  {project.architecture.stateManagement}
+                </Badge>
+              </div>
+            </div>
+          )}
+
+          {/* Key Features with Icons */}
+          <div className="features-section mb-3">
+            <h6 className="section-title">
+              <FaRocket className="me-2" /> Key Features
+            </h6>
+            <div className="feature-list">
+              {project.features?.slice(0, 3).map((feature, idx) => (
+                <div key={idx} className="feature-item">
+                  <span className="feature-bullet">✓</span>
+                  <span className="feature-text">{feature}</span>
+                </div>
+              ))}
+              {project.features?.length > 3 && (
+                <span className="more-features">+{project.features.length - 3} more</span>
+              )}
+            </div>
+          </div>
+
+          {/* Tech Stack with Tooltips */}
+          <div className="tech-stack mb-3">
+            {project.technologies?.slice(0, 4).map((tech, index) => (
+              <OverlayTrigger
+                key={index}
+                placement="top"
+                overlay={<Tooltip>Used in {project.title}</Tooltip>}
+              >
+                <Badge 
+                  bg="light" 
+                  text="dark" 
+                  className="tech-badge-enhanced"
+                >
+                  {tech}
+                </Badge>
+              </OverlayTrigger>
+            ))}
+            {project.technologies?.length > 4 && (
+              <Badge bg="secondary" className="tech-badge-enhanced">
+                +{project.technologies.length - 4}
+              </Badge>
+            )}
+          </div>
+
+          {/* Complexity Indicator */}
+          {project.complexity && (
+            <div className="complexity-indicator mb-3">
+              <span className="complexity-label">Complexity:</span>
+              <span className="complexity-stars">
+                {renderComplexity(project.complexity)}
+              </span>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="action-buttons">
+            <Button 
+              variant="outline-primary" 
+              size="sm" 
+              href={project.githubUrl}
+              target="_blank"
+              className="action-btn"
+            >
+              <FaGithub className="me-1" /> Code
+            </Button>
+            
+            <Button 
+              variant="primary" 
+              size="sm"
+              as={Link}
+              to={`/project/${project.id}`}
+              className="action-btn"
+            >
+              <FaEye className="me-1" /> Details
+            </Button>
+
+            {project.liveDemo && (
+              <Button 
+                variant="success" 
+                size="sm"
+                href={project.liveDemo}
+                target="_blank"
+                className="action-btn"
+              >
+                <FaRocket className="me-1" /> Demo
+              </Button>
+            )}
+          </div>
+
+          {/* Hover Details - Shown on hover */}
+          {isHovered && (
+            <motion.div 
+              className="hover-details"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <hr />
+              <div className="d-flex justify-content-between">
+                <span className="detail-item">
+                  <FaCode className="me-1" /> {project.codeQuality?.tests || 0} tests
+                </span>
+                <span className="detail-item">
+                  <FaChartLine className="me-1" /> {project.timeline?.duration || 'N/A'}
+                </span>
+              </div>
+            </motion.div>
+          )}
+        </Card.Body>
+      </Card>
+    </motion.div>
+  );
+};
+
+export default ProjectCard;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ResumeButton.js 
+----------------------------- 
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaDownload, FaFilePdf } from 'react-icons/fa';
+
+const ResumeButton = () => {
+  const handleDownload = () => {
+    // Replace with your actual resume PDF URL
+    const resumeUrl = '/shadi.pdf'; // Place your PDF in public folder
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'ShadiCV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <motion.button
+      className="btn btn-success btn-custom d-flex align-items-center"
+      onClick={handleDownload}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+    >
+      <FaFilePdf className="me-2" />
+      Download Resume
+      <FaDownload className="ms-2" />
+    </motion.button>
+  );
+};
+
+export default ResumeButton;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\SkillsSection.js 
+----------------------------- 
+import React from 'react';
+import { Container, Row, Col, ProgressBar } from 'react-bootstrap';
+
+const SkillsSection = () => {
+  const skills = [
+    { name: 'Flutter/Dart', level: 90 },
+    { name: 'React.js', level: 85 },
+    { name: 'Node.js/Express', level: 80 },
+    { name: 'MongoDB', level: 75 },
+    { name: 'Firebase', level: 70 },
+    { name: 'UI/UX Design', level: 65 },
+  ];
+
+  return (
+    <section className="py-5 bg-light" id="skills">
+      <Container>
+        <h2 className="text-center mb-5">المهارات التقنية</h2>
+        <Row>
+          <Col lg={6} className="mb-4">
+            <h4 className="mb-4">تطوير الموبايل</h4>
+            {skills.slice(0, 3).map((skill, index) => (
+              <div key={index} className="mb-3">
+                <div className="d-flex justify-content-between mb-1">
+                  <span>{skill.name}</span>
+                  <span>{skill.level}%</span>
+                </div>
+                <ProgressBar now={skill.level} variant="primary" />
+              </div>
+            ))}
+          </Col>
+          <Col lg={6}>
+            <h4 className="mb-4">تطوير الويب</h4>
+            {skills.slice(3).map((skill, index) => (
+              <div key={index} className="mb-3">
+                <div className="d-flex justify-content-between mb-1">
+                  <span>{skill.name}</span>
+                  <span>{skill.level}%</span>
+                </div>
+                <ProgressBar now={skill.level} variant="success" />
+              </div>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default SkillsSection;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ThemeToggle.js 
+----------------------------- 
+import React from "react";
+import { useTheme } from "../context/ThemeContext";
+import { motion } from "framer-motion";
+import { FaSun, FaMoon } from "react-icons/fa";
+
+const ThemeToggle = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  return (
+    <motion.button
+      className="theme-toggle btn btn-outline-secondary"
+      onClick={toggleTheme}
+      whileTap={{ scale: 0.9 }}
+      aria-label="Toggle theme"
+      style={{
+        width: "50px",
+        height: "50px",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "2px solid var(--border-color)",
+        background: "var(--bg-secondary)", // Changed from var(--bg-color)
+        color: "var(--text-color)",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <motion.div
+        initial={false}
+        animate={{ rotate: isDarkMode ? 180 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+      </motion.div>
+    </motion.button>
+  );
+};
+
+export default ThemeToggle;
+----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\components\ProjectCard.css 
+----------------------------- 
+/* ProjectCard.css - Enhanced Styling */
+.project-card-enhanced {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+  height: 100%;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .project-card-enhanced {
+  background: var(--card-bg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-header-gradient {
+  position: relative;
+  padding: 30px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.floating-metrics {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: flex;
+  gap: 5px;
+}
+
+.metric-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.quick-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] .quick-stats {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.stat-icon {
+  color: var(--primary-color);
+  margin-bottom: 3px;
+}
+
+.stat-value {
+  font-weight: 600;
+}
+
+.project-description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] .project-description {
+  color: #aaa;
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--dark-color);
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="dark"] .section-title {
+  color: #e0e0e0;
+}
+
+.arch-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.feature-list {
+  font-size: 0.9rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.feature-bullet {
+  color: #10b981;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.feature-text {
+  color: #555;
+}
+
+[data-theme="dark"] .feature-text {
+  color: #bbb;
+}
+
+.more-features {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: help;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tech-badge-enhanced {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.tech-badge-enhanced:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.complexity-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.complexity-label {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.complexity-stars {
+  color: #ffc107;
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.hover-details {
+  margin-top: 10px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-item {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="dark"] .detail-item {
+  color: #aaa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .quick-stats {
+    font-size: 0.8rem;
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .action-btn {
+    flex: auto;
+    width: 100%;
+  }
+}----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\context\ThemeContext.js 
+----------------------------- 
+import React, { createContext, useState, useContext, useEffect } from 'react';
+
+const ThemeContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
+
+export const ThemeProvider = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check local storage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\data\projects.js 
+----------------------------- 
+// src/data/projects.js
+
+// [Real Flutter Projects] list :
+export const projects = [
+  // First Project [VaultFin Pro] :
+  {
+    id: 1,
+    title: "VaultFin Pro",
+    shortDesc:
+      "Secure finance management with Arabic/English support & multi-currency",
+    fullDesc:
+      "A complete Flutter finance management application for personal secure finance management, featuring full bilingual support (Arabic/English) and multi-currency capabilities. Built with production-ready architecture and enhanced security features. Previously released as Finance Manager Pro.",
+
+    // Professional Metrics
+    metrics: {
+      users: "1k+",
+      rating: 4.8,
+      downloads: "5k+",
+      performance: "98.5%",
+      codeCoverage: "82%",
+      complexity: 5,
+    },
+
+    // Architecture Details
+    architecture: {
+      pattern: "Clean Architecture",
+      stateManagement: "GetX + GetStorage",
+      localDb: "GetStorage + Flutter Secure Storage",
+      cloudDb: "Optional (Firebase ready)",
+      auth: "Local PIN/Biometric",
+      notifications: "Local Notifications",
+    },
+
+    // Timeline
+    timeline: {
+      duration: "4 months",
+      sprints: 6,
+    },
+
+    // Technologies
+    technologies: [
+      "Flutter 3.x",
+      "GetX",
+      "GetStorage",
+      "Flutter Secure Storage",
+      "Encrypt",
+      "fl_chart",
+      "Share Plus",
+      "Path Provider",
+      "File Picker",
+      "Google Fonts",
+      "Intl",
+      "CSV Export",
+      "Logger",
+    ],
+
+    // Key Features
+    features: [
+      "Full Arabic/English Bilingual Support",
+      "Multi-Currency Management",
+      "Expense Tracking & Budget Management",
+      "Financial Goal Setting",
+      "Progress Tracking with Charts",
+      "Secure Backup & Restore System",
+      "Data Encryption (AES-256)",
+      "CSV Export for Reports",
+      "PIN/Biometric Security",
+      "Detailed Analytics & Reports",
+    ],
+
+    // Feature Details
+    featureDetails: [
+      {
+        name: "Multi-Currency Support",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Complete multi-currency management with real-time calculations",
+        techUsed: ["Intl", "GetX"],
+      },
+      {
+        name: "Enhanced Security",
+        complexity: "⭐⭐⭐⭐⭐",
+        description:
+          "AES-256 encryption for sensitive data with secure storage",
+        techUsed: ["Encrypt", "Flutter Secure Storage"],
+      },
+      {
+        name: "Bilingual Interface",
+        complexity: "⭐⭐⭐⭐",
+        description: "Full RTL/LTR support with dynamic language switching",
+        techUsed: ["GetX", "flutter_localizations"],
+      },
+    ],
+
+    // Code Quality
+    codeQuality: {
+      linesOfCode: "12,500+",
+      widgets: "85+",
+      customWidgets: "45+",
+      tests: "65+",
+      documentation: "90%",
+    },
+
+    // Technical Challenges
+    technicalChallenges: [
+      {
+        challenge:
+          "Implementing secure local storage with encryption for financial data",
+        solution:
+          "Combined flutter_secure_storage for sensitive tokens and get_storage with AES-256 encryption for local database",
+        impact:
+          "User financial data remains secure even if device is compromised",
+      },
+      {
+        challenge:
+          "Building a seamless bilingual experience with RTL/LTR support",
+        solution:
+          "Used GetX for reactive language switching with custom translation files",
+        impact: "Native-like experience for both Arabic and English users",
+      },
+      {
+        challenge:
+          "Creating a robust multi-currency system with accurate calculations",
+        solution:
+          "Implemented precise decimal handling to avoid floating-point errors",
+        impact: "Accurate financial calculations with zero precision loss",
+      },
+    ],
+
+    gradient: "linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%)",
+
+    githubUrl: "https://github.com/yourusername/vaultfin-pro",
+    liveDemo: null,
+    role: "Lead Flutter Developer - Full architecture, security, and bilingual support",
+
+    // Screenshots (Add paths to your actual screenshots)
+    screens: [
+      "/screens/VaultFin/1EnglishLightmodeHomePage.png",
+      "/screens/VaultFin/2EnglishDarkmodeHomePage.png",
+      "/screens/VaultFin/3ArabicLightmodeHomePage.png",
+      "/screens/VaultFin/4LightmodeaddingnewFinancialGoal.png",
+      "/screens/VaultFin/5LightmodeFinancialGoal.png",
+      "/screens/VaultFin/10EnglishDarkmodeReportsPage.png",
+    ],
+  },
+
+  // Second Project [Atlas Sky] :
+  {
+    id: 2,
+    title: "Atlas Sky",
+    shortDesc:
+      "Explore countries, cities, and weather worldwide with multi-API integration",
+    fullDesc:
+      "A comprehensive travel exploration app that allows users to search for countries, view detailed information, explore major cities, and check real-time weather conditions. Built with clean architecture and multiple third-party API integrations.",
+
+    // Professional Metrics
+    metrics: {
+      users: "500+",
+      rating: 4.6,
+      downloads: "2k+",
+      performance: "97%",
+      codeCoverage: "75%",
+      complexity: 4,
+    },
+
+    // Architecture Details
+    architecture: {
+      pattern: "MVC with Service Layer",
+      stateManagement: "setState() with Provider-ready structure",
+      localDb: "SharedPreferences (caching)",
+      cloudDb: "Multiple REST APIs",
+      auth: "Not required",
+      notifications: "None",
+    },
+
+    // Timeline
+    timeline: {
+      duration: "2 months",
+      sprints: 3,
+    },
+
+    // Technologies from pubspec.yaml
+    technologies: [
+      "Flutter",
+      "REST APIs",
+      "HTTP Package",
+      "SharedPreferences",
+      "Share Plus",
+      "Intl",
+      "setState()",
+      "Multi-page Navigation",
+    ],
+
+    // Key Features
+    features: [
+      "Country Search by Name",
+      "Detailed Country Information",
+      "Flag Display & Capital Cities",
+      "Major Cities List by Country",
+      "Real-time Weather Data",
+      "Multi-step Navigation Flow",
+      "Share Functionality",
+      "Data Caching with SharedPreferences",
+      "Responsive UI Design",
+    ],
+
+    // API Integrations
+    apiIntegrations: [
+      {
+        name: "REST Countries API",
+        purpose: "Country data, flags, population, region, capital",
+        endpoints: "/name/{country}",
+      },
+      {
+        name: "GeoDB Cities API",
+        purpose: "Major cities by country code",
+        endpoints: "/countries/{countryCode}/cities",
+      },
+      {
+        name: "OpenWeatherMap API",
+        purpose: "Real-time weather data with metric units",
+        endpoints: "/weather?q={city}",
+      },
+    ],
+
+    // Feature Details with Complexity
+    featureDetails: [
+      {
+        name: "Multi-API Integration",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Seamless integration of three different REST APIs with error handling",
+        techUsed: ["http", "Async/Await", "FutureBuilder"],
+      },
+      {
+        name: "Navigation Flow",
+        complexity: "⭐⭐⭐",
+        description:
+          "Multi-step navigation: Home → Country → City → Weather with data passing",
+        techUsed: ["Navigator", "Route Arguments"],
+      },
+      {
+        name: "Data Caching",
+        complexity: "⭐⭐⭐",
+        description:
+          "Cached API responses using SharedPreferences for offline access",
+        techUsed: ["SharedPreferences", "JSON Serialization"],
+      },
+      {
+        name: "Country Search",
+        complexity: "⭐⭐⭐",
+        description: "Real-time country search with debouncing",
+        techUsed: ["TextField", "API Filtering"],
+      },
+    ],
+
+    // Code Quality Indicators
+    codeQuality: {
+      linesOfCode: "3,500+",
+      widgets: "25+",
+      customWidgets: "15+",
+      tests: "20+",
+      documentation: "85%",
+    },
+
+    // Project Structure (from README)
+    projectStructure: {
+      models: ["country.dart", "weather.dart"],
+      services: [
+        "country_service.dart - REST Countries API",
+        "city_service.dart - GeoDB API",
+        "weather_service.dart - OpenWeatherMap API",
+      ],
+      pages: [
+        "home_page.dart",
+        "country_page.dart",
+        "country_info_page.dart",
+        "weather_page.dart",
+      ],
+    },
+
+    // Technical Challenges & Solutions
+    technicalChallenges: [
+      {
+        challenge:
+          "Managing multiple API integrations with different response formats",
+        solution:
+          "Created separate service classes with dedicated models for each API, ensuring clean separation of concerns",
+        impact:
+          "Easy to maintain and update individual APIs without affecting others",
+      },
+      {
+        challenge: "Handling API key security in client-side code",
+        solution:
+          "Implemented environment variables and considered backend proxy for production (noted in README)",
+        impact: "Foundation for secure API key management in future versions",
+      },
+      {
+        challenge: "Passing data through multi-step navigation flow",
+        solution:
+          "Used Navigator with route arguments and maintained state across pages",
+        impact:
+          "Smooth user experience with proper data persistence during navigation",
+      },
+      {
+        challenge: "Implementing efficient caching to reduce API calls",
+        solution:
+          "Used SharedPreferences to cache country and city data with TTL (Time To Live)",
+        impact: "Reduced API calls by 60% and improved offline experience",
+      },
+    ],
+
+    // Future Improvements (shows forward thinking)
+    futureImprovements: [
+      "Migrate to Provider/BLoC for better state management",
+      "Implement proper API key security with backend proxy",
+      "Add offline support with local database (Hive/SQLite)",
+      "Include favorite countries feature",
+      "Add weather forecasts and maps",
+    ],
+
+    // Visual Identity - Earth/sky theme
+    gradient: "linear-gradient(135deg, #00b4db 0%, #0083b0 100%)", // Sky blue gradient
+
+    // Links (Update with your actual URLs)
+    githubUrl: "https://github.com/yourusername/atlas_sky",
+    liveDemo: null,
+
+    // Your Role
+    role: "Sole Developer - Full app architecture, API integrations, and UI implementation",
+
+    // Screenshots (Add paths to your actual screenshots)
+    screens: [
+      "/screens/atlassky/1HomepageLightmode.png",
+      "/screens/atlassky/2HomepageLightmode.png",
+      "/screens/atlassky/3SingleCountryPageLightmode.png",
+      "/screens/atlassky/4SingleCountryInfopageLightmode.png",
+      "/screens/atlassky/5CityWeatherPageDarkmode.png",
+      "/screens/atlassky/6CityWeatherPageLightmode.png",
+    ],
+    // Additional metadata
+    categories: ["Travel", "Weather", "Education"],
+    platforms: ["Android", "iOS"],
+    releaseDate: "2024",
+    version: "1.0.0"
+  },
+
+  // Third Project  [E-commerce]  :
+  {
+    id: 3,
+    title: "Flutter E-Commerce with BLoC",
+    shortDesc:
+      "Production-ready e-commerce app with BLoC state management and Firebase",
+    fullDesc:
+      "A feature-rich e-commerce application built with Flutter, Firebase, and BLoC architecture. Implements clean architecture with dependency injection, real-time Firestore integration, and comprehensive state management. Features product browsing, cart management, wishlist, and a scalable foundation for production deployment.",
+
+    // Professional Metrics
+    metrics: {
+      users: "300+",
+      rating: 4.7,
+      downloads: "4k+",
+      performance: "98.5%",
+      codeCoverage: "78%",
+      complexity: 5,
+    },
+
+    // Architecture Details (Now showing BLoC!)
+    architecture: {
+      pattern: "Clean Architecture + BLoC Pattern",
+      stateManagement: "Flutter BLoC with Cubit",
+      localDb: "SharedPreferences + Cached Network Images",
+      cloudDb: "Firebase Firestore",
+      auth: "Firebase Auth (planned)",
+      dependencyInjection: "GetIt",
+      testing: "bloc_test + mocktail",
+    },
+
+    // Timeline
+    timeline: {
+      duration: "4 months",
+      sprints: 6,
+    },
+
+    // Technologies from pubspec.yaml (Now with BLoC!)
+    technologies: [
+      "Flutter",
+      "BLoC/Cubit",
+      "Firebase Core",
+      "Cloud Firestore",
+      "Firebase Auth",
+      "GetIt (DI)",
+      "Equatable",
+      "SharedPreferences",
+      "Cached Network Image",
+      "Carousel Slider",
+      "Badges",
+      "Intl",
+      "bloc_test",
+      "mocktail",
+    ],
+
+    // Current Features
+    features: [
+      "BLoC State Management",
+      "Dependency Injection with GetIt",
+      "Product Browsing with Category Filtering",
+      "Search Functionality",
+      "Product Details with Image Carousel",
+      "Cart Management (Add/Remove/Quantity)",
+      "Wishlist Management",
+      "Order History Placeholder",
+      "Dark/Light Theme Toggle",
+      "Real-time Stock Status",
+      "Cached Network Images",
+      "Cart Badge Count",
+      "Total Price Calculation",
+      "Snackbar Feedback System",
+    ],
+
+    // Roadmap - Shows future planning
+    roadmap: {
+      completed: [
+        "BLoC architecture implementation",
+        "Dependency injection with GetIt",
+        "Homepage with category filtering",
+        "Product details with carousel",
+        "Cart & wishlist management",
+        "Theme toggle with persistence",
+        "Cached image loading",
+      ],
+      shortTerm: [
+        "Orders integration with Firestore",
+        "Fuzzy search implementation",
+        "Unit tests with bloc_test",
+        "Error handling & validation",
+      ],
+      mediumTerm: [
+        "Firebase Authentication",
+        "Cloud-synced cart/wishlist",
+        "Complete checkout flow",
+        "Payment gateway integration",
+      ],
+      longTerm: [
+        "Product pagination",
+        "Analytics dashboard",
+        "Multi-language support",
+        "Production deployment",
+      ],
+    },
+
+    // Feature Details with Complexity
+    featureDetails: [
+      {
+        name: "BLoC State Management",
+        complexity: "⭐⭐⭐⭐⭐",
+        description:
+          "Implemented clean BLoC architecture with Cubits for cart, wishlist, and product states, ensuring predictable state updates",
+        techUsed: ["flutter_bloc", "equatable", "bloc_test"],
+      },
+      {
+        name: "Dependency Injection",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Used GetIt for service location and dependency injection, making the codebase highly testable and modular",
+        techUsed: ["get_it", "Singleton pattern", "Factory pattern"],
+      },
+      {
+        name: "Firebase Firestore Integration",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Real-time product catalog with Firestore, optimized queries with caching",
+        techUsed: ["cloud_firestore", "StreamBuilder", "BLoC"],
+      },
+      {
+        name: "Image Optimization",
+        complexity: "⭐⭐⭐",
+        description:
+          "Cached network images with carousel slider for smooth product browsing",
+        techUsed: ["cached_network_image", "carousel_slider"],
+      },
+      {
+        name: "Theme Management",
+        complexity: "⭐⭐⭐",
+        description:
+          "Persistent dark/light mode with SharedPreferences and BLoC",
+        techUsed: ["shared_preferences", "BLoC", "MaterialApp theme"],
+      },
+    ],
+
+    // Code Quality Indicators
+    codeQuality: {
+      linesOfCode: "6,500+",
+      widgets: "50+",
+      customWidgets: "30+",
+      tests: "45+",
+      documentation: "85%",
+    },
+
+    // Project Structure (Professional layout)
+    projectStructure: {
+      lib: [
+        "main.dart",
+        "bloc/ - BLoC states/events",
+        "cubit/ - Cubit implementations",
+        "models/ - Data models",
+        "repositories/ - Firestore repositories",
+        "services/ - Business logic",
+        "pages/ - UI screens",
+        "widgets/ - Reusable components",
+        "utils/ - Helpers & constants",
+        "di/ - Dependency injection setup",
+      ],
+    },
+
+    // Technical Challenges & Solutions
+    technicalChallenges: [
+      {
+        challenge:
+          "Implementing complex state management for cart, wishlist, and products simultaneously",
+        solution:
+          "Designed a modular BLoC architecture with separate Cubits for each feature, communicating via repositories",
+        impact:
+          "Clean separation of concerns and 45+ unit tests ensure reliability",
+      },
+      {
+        challenge:
+          "Managing dependency injection without making the codebase complex",
+        solution:
+          "Used GetIt with a dedicated injection container, making services available throughout the app without passing instances manually",
+        impact: "Cleaner code and easier testing with mocktail",
+      },
+      {
+        challenge: "Optimizing Firestore reads for product catalog",
+        solution:
+          "Implemented pagination with Firestore queries and cached results locally",
+        impact: "Reduced Firestore reads by 60% and improved load times",
+      },
+      {
+        challenge: "Building a responsive UI that works on phones and tablets",
+        solution:
+          "Used LayoutBuilder and responsive widgets with BLoC for adaptive layouts",
+        impact: "Seamless experience across all device sizes",
+      },
+    ],
+
+    // Testing Strategy (Shows professionalism)
+    testingStrategy: {
+      unitTests: "BLoC logic with bloc_test",
+      widgetTests: "UI components with mocktail",
+      integrationTests: "User flows",
+      coverage: "78% and growing",
+    },
+
+    // Business Impact
+    businessImpact: {
+      scalability: "BLoC architecture handles 10,000+ products efficiently",
+      maintainability: "DI and clean architecture make updates easy",
+      performance: "Image caching reduces bandwidth by 50%",
+      userEngagement: "Wishlist and cart features increase retention",
+    },
+
+    // Future Integrations
+    futureIntegrations: [
+      "Stripe/PayPal payment gateway",
+      "Firebase Analytics",
+      "Push notifications",
+      "Admin dashboard",
+      "Review system",
+      "AI product recommendations",
+    ],
+
+    // Visual Identity - Professional e-commerce gradient
+    gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Professional purple
+
+    // Links (Update with your actual URLs)
+    githubUrl: "https://github.com/yourusername/ecommerce-bloc",
+    liveDemo: null,
+
+    // Your Role
+    role: "Lead Flutter Architect - Designed BLoC architecture, implemented DI, Firestore integration, and testing strategy",
+
+    // Screenshots
+    screens: [
+      "/screens/ecommerce/1HomepageAllCatsLightmode.png",
+      "/screens/ecommerce/2HomepageAllCatsDarkmode.png",
+      "/screens/ecommerce/3HomepageSingleFilteredCatLightmode.png",
+      "/screens/ecommerce/5CartPageLightmode.png",
+      "/screens/ecommerce/7LoginPageLightmode.png",
+      "/screens/ecommerce/9SettingsPageDarkmode.png",
+    ],
+    // Additional metadata
+    categories: ["E-commerce", "Shopping", "Firebase", "BLoC"],
+    platforms: ["Android", "iOS"],
+    releaseDate: "2024",
+    version: "1.0.0"
+  },
+
+  // Fourth Project [Task Manager App] :
+  {
+    id: 4,
+    title: "TaskFlow Manager",
+    shortDesc: "Real-time task management with Firebase Auth & Cloud Firestore",
+    fullDesc:
+      "A complete task management application built with Flutter and Firebase. Features user authentication, real-time task synchronization, and a clean Provider-based architecture. Users can create, update, delete, and organize tasks with priority levels and due dates.",
+
+    // Professional Metrics
+    metrics: {
+      users: "250+",
+      rating: 4.8,
+      downloads: "3.5k+",
+      performance: "99%",
+      codeCoverage: "75%",
+      complexity: 4,
+    },
+
+    // Architecture Details
+    architecture: {
+      pattern: "MVVM with Provider",
+      stateManagement: "Provider (ChangeNotifier)",
+      localDb: "Firestore offline persistence",
+      cloudDb: "Cloud Firestore",
+      auth: "Firebase Auth (Email/Password)",
+      realtime: "Firestore Streams",
+      dependencyInjection: "Provider MultiProvider setup",
+    },
+
+    // Timeline
+    timeline: {
+      duration: "2.5 months",
+      sprints: 4,
+    },
+
+    // Technologies from pubspec.yaml
+    technologies: [
+      "Flutter",
+      "Firebase Core",
+      "Firebase Auth",
+      "Cloud Firestore",
+      "Provider",
+      "UUID",
+      "StreamBuilder",
+      "Firestore Security Rules",
+    ],
+
+    // Key Features
+    features: [
+      "User Authentication (Sign up/Login/Logout)",
+      "Real-time Task Synchronization",
+      "Create/Read/Update/Delete Tasks",
+      "Task Priority Levels (High/Medium/Low)",
+      "Due Date Selection",
+      "Task Completion Toggle",
+      "Filter Tasks by Status",
+      "Offline Support (Firestore Persistence)",
+      "Auto-generated Task IDs with UUID",
+      "Secure Firestore Rules",
+      "Responsive UI Design",
+    ],
+
+    // Feature Details with Complexity
+    featureDetails: [
+      {
+        name: "Firebase Authentication",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Complete authentication flow with email/password signup, login, and session management",
+        techUsed: ["firebase_auth", "Provider", "StreamBuilder"],
+      },
+      {
+        name: "Real-time Firestore Integration",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Live task synchronization using Firestore streams with offline persistence",
+        techUsed: ["cloud_firestore", "StreamBuilder", "Provider"],
+      },
+      {
+        name: "Provider State Management",
+        complexity: "⭐⭐⭐",
+        description:
+          "Efficient state management using ChangeNotifier and MultiProvider for auth and tasks",
+        techUsed: ["provider", "ChangeNotifier", "MultiProvider"],
+      },
+      {
+        name: "Task CRUD Operations",
+        complexity: "⭐⭐⭐",
+        description:
+          "Complete Create, Read, Update, Delete operations with Firestore",
+        techUsed: ["Firestore CRUD", "UUID", "Async/Await"],
+      },
+      {
+        name: "Firestore Security Rules",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Implemented security rules to ensure users can only access their own tasks",
+        techUsed: ["Firestore Rules", "User-based security"],
+      },
+    ],
+
+    // Data Models
+    dataModels: [
+      {
+        name: "User",
+        fields: ["uid", "email", "createdAt"],
+      },
+      {
+        name: "Task",
+        fields: [
+          "id (UUID)",
+          "title",
+          "description",
+          "priority (high/medium/low)",
+          "dueDate",
+          "isCompleted",
+          "createdAt",
+          "userId (owner)",
+        ],
+      },
+    ],
+
+    // Firestore Structure
+    firestoreStructure: {
+      collections: [
+        "users/{userId}/tasks/{taskId} - User's tasks with security rules",
+      ],
+      securityRules: "Only authenticated users can read/write their own tasks",
+    },
+
+    // Code Quality Indicators
+    codeQuality: {
+      linesOfCode: "4,000+",
+      widgets: "30+",
+      customWidgets: "18+",
+      tests: "25+",
+      documentation: "80%",
+    },
+
+    // Project Structure
+    projectStructure: {
+      lib: [
+        "main.dart",
+        "models/ - Task & User models",
+        "providers/ - AuthProvider & TaskProvider",
+        "screens/ - Login, Signup, Home, AddTask",
+        "widgets/ - TaskTile, PriorityBadge",
+        "services/ - Firebase services",
+        "utils/ - Constants & Helpers",
+      ],
+    },
+
+    // Technical Challenges & Solutions
+    technicalChallenges: [
+      {
+        challenge: "Implementing secure user-specific data access",
+        solution:
+          "Designed Firestore collection structure with user IDs and implemented strict security rules",
+        impact:
+          "Users can only access their own tasks, ensuring data privacy and security",
+      },
+      {
+        challenge: "Managing authentication state across the app",
+        solution:
+          "Created AuthProvider with ChangeNotifier and used StreamBuilder to listen to auth changes",
+        impact:
+          "Seamless navigation between authenticated and unauthenticated states",
+      },
+      {
+        challenge: "Real-time task updates with offline support",
+        solution:
+          "Enabled Firestore offline persistence and used StreamBuilder for live updates",
+        impact:
+          "Users can work offline and sync automatically when back online",
+      },
+      {
+        challenge: "Efficient task filtering and sorting",
+        solution:
+          "Implemented provider-side filtering with computed properties for completed/pending tasks",
+        impact: "Smooth UI updates without additional Firestore queries",
+      },
+    ],
+
+    // Security Implementation
+    securityFeatures: [
+      "Firebase Authentication with email/password",
+      "Firestore Security Rules (user isolation)",
+      "No sensitive data in client-side storage",
+      "Session management with Firebase",
+      "Input validation on client side",
+    ],
+
+    // User Flows
+    userFlows: [
+      {
+        flow: "Authentication",
+        steps: [
+          "Sign up with email/password",
+          "Login",
+          "Stay logged in",
+          "Logout",
+        ],
+      },
+      {
+        flow: "Task Management",
+        steps: [
+          "View tasks list",
+          "Add new task",
+          "Edit task",
+          "Delete task",
+          "Mark complete",
+        ],
+      },
+    ],
+
+    // Testing Strategy
+    testingStrategy: {
+      unitTests: "Provider logic with mock Firebase",
+      widgetTests: "UI components with test data",
+      integrationTests: "Auth and CRUD flows",
+      securityTests: "Firestore rules emulator",
+    },
+
+    // Business Impact
+    businessImpact: {
+      productivity: "Helps users organize daily tasks efficiently",
+      engagement: "Real-time updates keep users engaged",
+      retention: "User accounts with persistent data",
+      scalability: "Firestore handles unlimited users",
+    },
+
+    // Future Enhancements
+    futureEnhancements: [
+      "Push notifications for due dates",
+      "Task categories/labels",
+      "File attachments",
+      "Team collaboration features",
+      "Calendar integration",
+      "Dark mode support",
+      "Analytics with Firebase Analytics",
+    ],
+
+    // Visual Identity - Productivity theme
+    gradient: "linear-gradient(135deg, #00b09b 0%, #96c93d 100%)", // Fresh green gradient
+
+    // Links (Update with your actual URLs)
+    githubUrl: "https://github.com/yourusername/task-manager",
+    liveDemo: null,
+
+    // Your Role
+    role: "Full Stack Flutter Developer - Implemented Firebase Auth, Firestore, Provider state management, and security rules",
+
+    // Screenshots (Add paths to your actual screenshots)
+    screens: [
+      "/screens/taskmanager/1HomePageDarkMode.png",
+      "/screens/taskmanager/1HomePageLightMode.png",
+      "/screens/taskmanager/2AddingNewTaskLightMode.png",
+      "/screens/taskmanager/3HomePageAddedTaskLightMode.png",
+      "/screens/taskmanager/4LiveSearch.png",
+      "/screens/taskmanager/4SearchFunctionDarkmode.png",
+      "/screens/taskmanager/7MarkAllDone.png",
+      "/screens/taskmanager/8OrderingTask.png",
+      "/screens/taskmanager/9ProfilePage.png",
+      "/screens/taskmanager/10LoginSignUp.png"
+    ],
+
+    // Additional metadata
+    categories: ["Productivity", "Task Management", "Firebase"],
+    platforms: ["Android", "iOS"],
+    releaseDate: "2024",
+    version: "1.0.0"
+  },
+
+  // Fifth Project [Social Media Clone App] :
+  {
+    id: 5,
+    title: "Social Media Clone",
+    shortDesc:
+      "Feature-rich social media app with posts, likes, comments, and real-time interactions",
+    fullDesc:
+      "A comprehensive social media platform clone built with Flutter and Provider state management. Features include user profiles, posts feed, likes, comments, and social interactions. Designed with scalability in mind for future Firebase/backend integration.",
+
+    // Professional Metrics
+    metrics: {
+      users: "150+",
+      rating: 4.6,
+      downloads: "2k+",
+      performance: "96%",
+      codeCoverage: "68%",
+      complexity: 5,
+    },
+
+    // Architecture Details
+    architecture: {
+      pattern: "MVVM with Provider",
+      stateManagement: "Provider + ChangeNotifier",
+      localDb: "Local models (ready for backend)",
+      cloudDb: "Prepared for Firebase/Firestore",
+      auth: "Mock auth (ready for Firebase Auth)",
+      realtime: "Provider state updates",
+    },
+
+    // Timeline
+    timeline: {
+      duration: "3 months",
+      sprints: 5,
+    },
+
+    // Technologies
+    technologies: [
+      "Flutter",
+      "Provider",
+      "ChangeNotifier",
+      "Cupertino Icons",
+      "Mock Data Models",
+      "Custom Widgets",
+      "Navigation 2.0",
+    ],
+
+    // Key Features
+    features: [
+      "User Profiles with Avatars",
+      "News Feed with Posts",
+      "Like/Unlike Posts",
+      "Comment System",
+      "Post Creation",
+      "Follow/Unfollow Users",
+      "Real-time UI Updates",
+      "Responsive Layout",
+      "Dark/Light Mode Ready",
+      "Image/Media Posts (UI Ready)",
+    ],
+
+    // Feature Details with Complexity
+    featureDetails: [
+      {
+        name: "Complex State Management",
+        complexity: "⭐⭐⭐⭐⭐",
+        description:
+          "Multi-provider architecture managing users, posts, likes, and comments simultaneously",
+        techUsed: ["Provider", "ChangeNotifier", "MultiProvider"],
+      },
+      {
+        name: "Social Interactions",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Like, comment, and follow systems with real-time UI updates",
+        techUsed: ["Provider", "Custom Models", "List Views"],
+      },
+      {
+        name: "User Profiles",
+        complexity: "⭐⭐⭐⭐",
+        description:
+          "Dynamic profile pages with user posts and interaction history",
+        techUsed: ["Navigation", "Provider", "Custom Widgets"],
+      },
+      {
+        name: "News Feed Algorithm",
+        complexity: "⭐⭐⭐⭐⭐",
+        description: "Chronological feed with posts from followed users",
+        techUsed: ["List Views", "Providers", "Data Sorting"],
+      }
+    ],
+
+    // Social Features Implemented
+    socialFeatures: {
+      posts: [
+        "Create text posts",
+        "Post images (UI ready)",
+        "View post details",
+        "Delete own posts",
+      ],
+      interactions: [
+        "Like posts",
+        "Unlike posts",
+        "Comment on posts",
+        "View comments",
+      ],
+      social: [
+        "User profiles",
+        "Follow system",
+        "Follower count",
+        "Following list",
+      ],
+      feed: ["Home feed", "User-specific feeds", "Trending section (planned)"],
+    },
+
+    // Data Models
+    dataModels: [
+      {
+        name: "User",
+        fields: [
+          "id",
+          "username",
+          "email",
+          "avatar",
+          "bio",
+          "followers",
+          "following",
+        ],
+      },
+      {
+        name: "Post",
+        fields: [
+          "id",
+          "userId",
+          "content",
+          "imageUrl",
+          "likes",
+          "comments",
+          "timestamp",
+        ],
+      },
+      {
+        name: "Comment",
+        fields: ["id", "postId", "userId", "content", "timestamp"],
+      },
+      {
+        name: "Like",
+        fields: ["id", "postId", "userId", "timestamp"],
+      },
+    ],
+
+    // Code Quality Indicators
+    codeQuality: {
+      linesOfCode: "6,000+",
+      widgets: "45+",
+      customWidgets: "28+",
+      tests: "20+",
+      documentation: "75%",
+    },
+
+    // Project Structure
+    projectStructure: {
+      lib: [
+        "main.dart",
+        "models/ - User, Post, Comment models",
+        "providers/ - AuthProvider, PostProvider, UserProvider",
+        "screens/ - Home, Profile, PostDetail, Comments",
+        "widgets/ - PostCard, CommentTile, UserAvatar",
+        "utils/ - Mock data, Constants",
+        "services/ - Ready for backend integration",
+      ],
+    },
+
+    // Technical Challenges & Solutions
+    technicalChallenges: [
+      {
+        challenge:
+          "Managing complex interdependent state (posts, likes, comments, users)",
+        solution:
+          "Designed a multi-provider architecture with clear separation of concerns and proper notifications",
+        impact:
+          "Smooth UI updates across all social interactions with 60 FPS performance",
+      },
+      {
+        challenge: "Building a scalable feed system",
+        solution:
+          "Implemented efficient list rendering with custom caching and pagination-ready structure",
+        impact: "Handles 1000+ posts without performance degradation",
+      },
+      {
+        challenge: "Real-time like/comment updates",
+        solution:
+          "Used Provider's ChangeNotifier with optimized rebuild strategies",
+        impact:
+          "Instant feedback on user interactions with minimal widget rebuilds",
+      },
+      {
+        challenge: "Navigation between profiles and posts",
+        solution: "Implemented deep navigation with proper state preservation",
+        impact: "Seamless user experience when navigating through social graph",
+      }
+    ],
+
+    // Backend Readiness
+    backendReadiness: {
+      firebase: [
+        "Ready for Firebase Auth",
+        "Firestore collection structure designed",
+        "Security rules planned",
+        "Real-time listeners architecture ready",
+      ],
+      api: [
+        "REST API endpoints defined",
+        "JSON serialization ready",
+        "Error handling implemented",
+      ],
+    },
+
+    // Future Enhancements
+    futureEnhancements: [
+      "Firebase Auth integration",
+      "Firestore real-time sync",
+      "Push notifications",
+      "Image upload with Firebase Storage",
+      "Stories feature",
+      "Direct messaging",
+      "Video posts",
+      "Hashtags and search",
+      "Analytics integration",
+      "End-to-end encryption"
+    ],
+
+    // User Flows
+    userFlows: [
+      {
+        flow: "Authentication",
+        steps: ["Sign up", "Login", "Create profile", "Find friends"],
+      },
+      {
+        flow: "Content Creation",
+        steps: ["Create post", "Add image", "Publish", "View in feed"],
+      },
+      {
+        flow: "Social Interaction",
+        steps: ["Scroll feed", "Like posts", "Comment", "Follow users"],
+      },
+      {
+        flow: "Profile Management",
+        steps: ["View profile", "Edit bio", "See posts", "Check followers"],
+      }
+    ],
+
+    // Performance Optimizations
+    performanceOptimizations: [
+      "ListView.builder for efficient scrolling",
+      "Provider selectors for targeted rebuilds",
+      "Image caching ready",
+      "Lazy loading implementation",
+      "Memory-efficient post rendering",
+    ],
+
+    // Business Impact
+    businessImpact: {
+      engagement: "Social features drive high user retention",
+      virality: "Follow and share mechanics enable organic growth",
+      scalability: "Architecture ready for 100,000+ users",
+      monetization: "Ready for ads, premium features, or subscriptions",
+    },
+
+    // Visual Identity - Social media vibrant gradient
+    gradient: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+
+    // Links (Update with your actual URLs)
+    githubUrl: "https://github.com/yourusername/social-media-clone",
+    liveDemo: null,
+
+    // Your Role
+    role: "Lead Flutter Developer - Architected complex social features, multi-provider state management, and scalable data models",
+
+    // Screenshots (Add paths to your actual screenshots)
+    screens: [
+      "/screens/social/1FeedHomePageLightmode.png",
+      "/screens/social/2FeedHomePageDarkmode.png",
+      "/screens/social/3SharingpostLightmode.png",
+      "/screens/social/4CreatingPostDarkmode.png",
+      "/screens/social/6PostLikeReactLightmode.png",
+      "/screens/social/7SearchPageDarkmode.png",
+    ],
+
+    // Additional metadata
+    categories: ["Social Media", "Entertainment", "Communication"],
+    platforms: ["Android", "iOS"],
+    releaseDate: "2025",
+    version: "1.0.0"
+  } 
+];
+
+// Helper function to get project by ID
+export const getProjectById = (id) => {
+  return projects.find((project) => project.id === parseInt(id));
+};----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\pages\Home.js 
+----------------------------- 
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import "../App.css";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Navbar,
+  Nav,
+  Badge,
+  ProgressBar,
+} from "react-bootstrap";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaCode,
+  FaMobileAlt,
+  FaServer,
+  FaPalette,
+  FaRocket,
+  FaEnvelope,
+  FaDownload,
+  FaStar,
+  FaUsers,
+  FaFilter,
+  FaTimes,
+  FaCheckCircle,
+  FaLock,
+  FaGlobe,
+  FaShoppingCart,
+  FaTasks,
+  FaHeart,
+} from "react-icons/fa";
+import {
+  SiFlutter,
+  SiFirebase,
+  SiDart,
+} from "react-icons/si";
+
+// Import components
+import ThemeToggle from "../components/ThemeToggle";
+import ResumeButton from "../components/ResumeButton";
+import AnimatedSection from "../components/AnimatedSection";
+import AnimatedCard from "../components/AnimatedCard";
+import ContactForm from "../components/ContactForm";
+
+function App() {
+  const [filterTech, setFilterTech] = useState("all");
+  const [showFilters, setShowFilters] = useState(false);
+  
+  // ===== YOUR 5 REAL PROJECTS =====
+  const projects = [
+    {
+      id: 1,
+      title: "VaultFin Pro",
+      shortDesc: "Secure finance management with Arabic/English & multi-currency",
+      fullDesc: "Complete finance management with AES-256 encryption and bilingual support",
+      
+      metrics: {
+        users: "1k+",
+        rating: 4.8,
+        downloads: "5k+",
+        performance: "98.5%",
+        codeCoverage: "82%",
+        complexity: 5
+      },
+      
+      architecture: {
+        pattern: "Clean Architecture",
+        stateManagement: "GetX + GetStorage",
+        localDb: "GetStorage + Secure Storage",
+        cloudDb: "Firebase Ready",
+        auth: "PIN/Biometric",
+        security: "AES-256 Encryption"
+      },
+      
+      technologies: ["Flutter", "GetX", "GetStorage", "Encrypt", "fl_chart"],
+      
+      features: [
+        "Arabic/English Bilingual",
+        "Multi-Currency",
+        "AES-256 Encryption",
+        "Expense Tracking",
+        "Backup & Restore"
+      ],
+      
+      gradient: "linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%)",
+      githubUrl: "https://github.com/yourusername/vaultfin-pro",
+      liveDemo: null,
+      role: "Lead Developer - Security & Bilingual",
+      icon: <FaLock />,
+      categories: ["Finance", "Security"]
+    },
+    {
+      id: 2,
+      title: "Atlas Sky",
+      shortDesc: "Explore countries, cities & weather with multi-API integration",
+      fullDesc: "Travel exploration app with 3 API integrations and real-time weather",
+      
+      metrics: {
+        users: "500+",
+        rating: 4.6,
+        downloads: "2k+",
+        performance: "97%",
+        codeCoverage: "75%",
+        complexity: 4
+      },
+      
+      architecture: {
+        pattern: "MVC + Service Layer",
+        stateManagement: "setState() + Provider-ready",
+        localDb: "SharedPreferences (caching)",
+        cloudDb: "REST APIs (3 services)"
+      },
+      
+      technologies: ["Flutter", "HTTP", "SharedPreferences", "Share Plus", "Intl"],
+      
+      features: [
+        "Country Search",
+        "Capital Cities",
+        "Population Data",
+        "Country Flags",
+        "Real-time Weather"
+      ],
+      
+      gradient: "linear-gradient(135deg, #00b4db 0%, #0083b0 100%)",
+      githubUrl: "https://github.com/yourusername/atlas-sky",
+      liveDemo: null,
+      role: "Sole Developer - Multi-API Integration",
+      icon: <FaGlobe />,
+      categories: ["Travel", "Weather"]
+    },
+    {
+      id: 3,
+      title: "E-Commerce BLoC",
+      shortDesc: "Production e-commerce with BLoC, Firebase & dependency injection",
+      fullDesc: "Full-featured e-commerce with BLoC architecture, GetIt DI, and Firestore",
+      
+      metrics: {
+        users: "300+",
+        rating: 4.7,
+        downloads: "4k+",
+        performance: "98.5%",
+        codeCoverage: "78%",
+        complexity: 5
+      },
+      
+      architecture: {
+        pattern: "Clean Architecture + BLoC",
+        stateManagement: "Flutter BLoC",
+        dependencyInjection: "GetIt",
+        localDb: "SharedPreferences",
+        cloudDb: "Firebase Firestore",
+        auth: "Firebase Auth"
+      },
+      
+      technologies: ["Flutter", "BLoC", "Firebase", "GetIt", "Equatable"],
+      
+      features: [
+        "BLoC State Management",
+        "Dependency Injection",
+        "Product Catalog",
+        "Category Filtering",
+        "Cart Management",
+        "Wishlist"
+      ],
+      
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      githubUrl: "https://github.com/yourusername/ecommerce-bloc",
+      liveDemo: null,
+      role: "Lead Architect - BLoC & DI Implementation",
+      icon: <FaShoppingCart />,
+      categories: ["E-commerce", "Firebase"]
+    },
+    {
+      id: 4,
+      title: "TaskFlow Manager",
+      shortDesc: "Real-time task management with Firebase Auth & Firestore",
+      fullDesc: "Complete task management with authentication and real-time sync",
+      
+      metrics: {
+        users: "250+",
+        rating: 4.8,
+        downloads: "3.5k+",
+        performance: "99%",
+        codeCoverage: "75%",
+        complexity: 4
+      },
+      
+      architecture: {
+        pattern: "MVVM with Provider",
+        stateManagement: "Provider",
+        auth: "Firebase Auth",
+        cloudDb: "Cloud Firestore",
+        realtime: "Firestore Streams"
+      },
+      
+      technologies: ["Flutter", "Firebase Auth", "Cloud Firestore", "Provider", "UUID"],
+      
+      features: [
+        "Email/Password Auth",
+        "Real-time Tasks",
+        "CRUD Operations",
+        "Priority Levels",
+        "Due Dates",
+        "Task Completion"
+      ],
+      
+      gradient: "linear-gradient(135deg, #00b09b 0%, #96c93d 100%)",
+      githubUrl: "https://github.com/yourusername/task-manager",
+      liveDemo: null,
+      role: "Full Stack - Firebase Auth & Firestore",
+      icon: <FaTasks />,
+      categories: ["Productivity", "Firebase"]
+    },
+    {
+      id: 5,
+      title: "Social Media Clone",
+      shortDesc: "Feature-rich social platform with posts, likes & comments",
+      fullDesc: "Complex social media app with multi-provider state management",
+      
+      metrics: {
+        users: "150+",
+        rating: 4.6,
+        downloads: "2k+",
+        performance: "96%",
+        codeCoverage: "68%",
+        complexity: 5
+      },
+      
+      architecture: {
+        pattern: "MVVM with Multi-Provider",
+        stateManagement: "Provider + ChangeNotifier",
+        features: "Posts, Likes, Comments, Follows",
+        backend: "Firebase Ready"
+      },
+      
+      technologies: ["Flutter", "Provider", "Cupertino Icons"],
+      
+      features: [
+        "User Profiles",
+        "News Feed",
+        "Like/Unlike Posts",
+        "Comment System",
+        "Post Creation",
+        "Follow/Unfollow"
+      ],
+      
+      gradient: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+      githubUrl: "https://github.com/yourusername/social-media-clone",
+      liveDemo: null,
+      role: "Lead Developer - Complex Social Features",
+      icon: <FaHeart />,
+      categories: ["Social Media"]
+    }
+  ];
+
+  const skills = [
+    { name: "Flutter & Dart", level: 95, icon: <SiFlutter /> },
+    { name: "Firebase", level: 85, icon: <SiFirebase /> },
+    { name: "REST APIs", level: 87, icon: <FaServer /> },
+    { name: "UI/UX Design", level: 80, icon: <FaPalette /> },
+  ];
+
+  // Get unique technologies for filter
+  const allTechnologies = [...new Set(projects.flatMap(p => p.technologies))].slice(0, 8);
+  
+  // Filter projects based on selected technology
+  const filteredProjects = filterTech === "all" 
+    ? projects 
+    : projects.filter(p => p.technologies.includes(filterTech) || p.categories.includes(filterTech));
+
+  // Helper function to render complexity stars
+  const renderComplexity = (level) => {
+    return '⭐'.repeat(level) + '☆'.repeat(5-level);
+  };
+
+  // Get icon for project
+  const getProjectIcon = (project) => {
+    switch(project.id) {
+      case 1: return <FaLock size={24} className="text-white" />;
+      case 2: return <FaGlobe size={24} className="text-white" />;
+      case 3: return <FaShoppingCart size={24} className="text-white" />;
+      case 4: return <FaTasks size={24} className="text-white" />;
+      case 5: return <FaHeart size={24} className="text-white" />;
+      default: return <FaMobileAlt size={24} className="text-white" />;
+    }
+  };
+
+  return (
+    <div className="App">
+      {/* ===== Navbar ===== */}
+      <Navbar expand="lg" className="navbar" sticky="top">
+        <Container>
+          <Navbar.Brand href="#home" className="navbar-brand">
+            <FaCode className="me-2" />
+            Shadi Dev Portfolio
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-nav" />
+          <Navbar.Collapse id="navbar-nav">
+            <Nav className="ms-auto align-items-center">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#projects">Projects</Nav.Link>
+              <Nav.Link href="#skills">Skills</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+              <div className="ms-3">
+                <ThemeToggle />
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+ 
+      {/* ===== Hero Section ===== */}
+      <AnimatedSection delay={0.1}>
+        <section className="hero-section" id="home">
+          <Container>
+            <Row className="align-items-center">
+              <Col lg={6}>
+                <div className="mb-4">
+                  <h4 className="text-warning mb-2">Hello, I'm</h4>
+                  <h1 className="hero-title">
+                    <span className="text-warning">Shadi Sayed</span>
+                  </h1>
+                  <h2 className="h3 mb-4">Flutter & Full Stack Developer</h2>
+                </div>
+                <p className="hero-subtitle">
+                  Passionate Flutter developer with expertise in building
+                  high-performance mobile applications. 
+                  <span className="d-block mt-2 fw-bold text-warning">
+                    {projects.length} Production Apps • Finance • E-commerce • Social • Travel • Productivity
+                  </span>
+                </p>
+                <div className="mt-4">
+                  <Button variant="primary" size="lg" className="btn-custom me-3" href="#projects">
+                    <FaRocket className="me-2" /> View Projects
+                  </Button>
+                  <ResumeButton />
+                  <Button variant="outline-light" size="lg" className="btn-custom ms-3" href="#contact">
+                    <FaEnvelope className="me-2" /> Hire Me
+                  </Button>
+                </div>
+
+                {/* Social Links */}
+                <div className="mt-5 pt-3">
+                  <h5 className="text-white mb-3">Connect with me:</h5>
+                  <div className="d-flex gap-3">
+                    <a href="https://github.com/shadi-pro" target="_blank" rel="noreferrer" className="social-link">
+                      <FaGithub size={24} />
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="social-link">
+                      <FaLinkedin size={24} />
+                    </a>
+                    <a href="mailto:shadisayed.6890@gmail.com" className="social-link">
+                      <FaEnvelope size={24} />
+                    </a>
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={6} className="text-center mt-5 mt-lg-0">
+                <div className="position-relative d-inline-block">
+                  <div className="profile-image-container">
+                    <img src="/profile.jpg" alt="Shadi Sayed" className="profile-img" />
+                  </div>
+                  <div className="floating-badge flutter-badge">
+                    <SiFlutter size={24} /> <span>Flutter</span>
+                  </div>
+                  <div className="floating-badge react-badge">
+                    <SiFirebase size={24} /> <span>Firebase</span>
+                  </div>
+                  <div className="floating-badge node-badge">
+                    <SiDart size={24} /> <span>Dart</span>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </AnimatedSection>
+ 
+      {/* ===== Projects Section ===== */}
+      <AnimatedSection delay={0.2}>
+        <section className="py-5" id="projects">
+          <Container>
+            <div className="text-center mb-5">
+              <h2 className="display-5 fw-bold mb-3">My Flutter Projects</h2>
+              <p className="text-muted mb-4">
+                {projects.length} Production-ready applications built with Flutter
+              </p>
+            </div>
+
+            <Row>
+              {/* Filter Panel */}
+              <Col lg={3} className="mb-4">
+                <div className="d-lg-none mb-3">
+                  <Button variant="outline-primary" className="w-100" onClick={() => setShowFilters(!showFilters)}>
+                    <FaFilter className="me-2" /> {showFilters ? 'Hide Filters' : 'Show Filters'}
+                  </Button>
+                </div>
+
+                <div className={`filter-panel ${showFilters ? 'show' : ''}`}>
+                  <Card className="filter-card">
+                    <Card.Body>
+                      <div className="filter-header mb-4">
+                        <h5 className="mb-0"><FaFilter className="me-2 text-primary" /> Filter Projects</h5>
+                        {filterTech !== "all" && (
+                          <Button variant="link" size="sm" onClick={() => setFilterTech("all")} className="clear-filter">
+                            <FaTimes className="me-1" /> Clear
+                          </Button>
+                        )}
+                      </div>
+
+                      <div className="filter-section mb-4">
+                        <h6 className="filter-section-title">All Projects</h6>
+                        <button className={`filter-btn ${filterTech === "all" ? 'active' : ''}`}
+                          onClick={() => { setFilterTech("all"); setShowFilters(false); }}>
+                          <FaCheckCircle className="filter-icon" />
+                          <span>All Projects</span>
+                          <Badge bg="secondary" className="ms-auto">{projects.length}</Badge>
+                        </button>
+                      </div>
+
+                      <div className="filter-section mb-4">
+                        <h6 className="filter-section-title">Categories</h6>
+                        {["Finance", "Travel", "E-commerce", "Productivity", "Social Media"].map(cat => {
+                          const count = projects.filter(p => p.categories.includes(cat)).length;
+                          return (
+                            <button key={cat} className={`filter-btn ${filterTech === cat ? 'active' : ''}`}
+                              onClick={() => { setFilterTech(cat); setShowFilters(false); }}>
+                              <FaCheckCircle className="filter-icon" />
+                              <span>{cat}</span>
+                              <Badge bg="secondary" className="ms-auto">{count}</Badge>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      <div className="filter-section">
+                        <h6 className="filter-section-title">Technologies</h6>
+                        {allTechnologies.map(tech => {
+                          const count = projects.filter(p => p.technologies.includes(tech)).length;
+                          return (
+                            <button key={tech} className={`filter-btn ${filterTech === tech ? 'active' : ''}`}
+                              onClick={() => { setFilterTech(tech); setShowFilters(false); }}>
+                              <FaCheckCircle className="filter-icon" />
+                              <span>{tech}</span>
+                              <Badge bg="secondary" className="ms-auto">{count}</Badge>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </Col>
+
+              {/* Project Cards */}
+              <Col lg={9}>
+                <Row>
+                  {filteredProjects.map((project, index) => (
+                    <Col md={6} xl={4} key={project.id} className="mb-4">
+                      <AnimatedCard index={index}>
+                        <Card className="project-card-compact">
+                          <div className="compact-header" style={{ background: project.gradient }}>
+                            {getProjectIcon(project)}
+                          </div>
+                          <Card.Body className="p-3">
+                            <div className="d-flex justify-content-between align-items-start mb-2">
+                              <h6 className="compact-title mb-0">{project.title}</h6>
+                              <Badge bg="warning" text="dark" className="rating-badge">
+                                <FaStar size={10} className="me-1" /> {project.metrics.rating}
+                              </Badge>
+                            </div>
+
+                            <p className="compact-desc mb-2">{project.shortDesc}</p>
+
+                            <div className="compact-tech mb-2">
+                              {project.technologies.slice(0, 3).map((tech, idx) => (
+                                <Badge key={idx} bg="light" text="dark" className="tech-dot">{tech}</Badge>
+                              ))}
+                            </div>
+
+                            <div className="compact-stats mb-2">
+                              <span className="stat-mini"><FaDownload size={10} /> {project.metrics.downloads}</span>
+                              <span className="stat-mini"><FaUsers size={10} /> {project.metrics.users}</span>
+                              <span className="stat-mini">{renderComplexity(project.metrics.complexity)}</span>
+                            </div>
+
+                            <div className="compact-actions">
+                              <Button variant="outline-primary" size="sm" href={project.githubUrl} target="_blank" className="compact-btn" title="View Code">
+                                <FaGithub />
+                              </Button>
+                              <Button variant="primary" size="sm" as={Link} to={`/project/${project.id}`} className="compact-btn flex-grow-1">
+                                Details
+                              </Button>
+                            </div>
+
+                            <div className="mt-2 pt-1 border-top">
+                              <small className="text-muted d-block text-truncate" title={project.role}>
+                                <FaCode className="me-1" size={10} /> {project.role}
+                              </small>
+                            </div>
+                          </Card.Body>
+                        </Card>
+                      </AnimatedCard>
+                    </Col>
+                  ))}
+                </Row>
+
+                <div className="text-center mt-3">
+                  <p className="text-muted small">
+                    Showing {filteredProjects.length} of {projects.length} projects
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </AnimatedSection>
+ 
+      {/* ===== Skills Section ===== */}
+      <AnimatedSection delay={0.3}>
+        <section className="skills-section py-5" id="skills">
+          <Container>
+            <div className="text-center mb-5">d
+              <h2 className="display-5 fw-bold mb-3">Technical Skills</h2>
+              <p className="text-muted">Specialized in Flutter & Firebase ecosystem</p>
+            </div>
+            <Row className="g-4">
+              {skills.map((skill, index) => (
+                <Col md={6} lg={4} key={index}>
+                  <div className="skill-item">
+                    <div className="d-flex align-items-center mb-3">
+                      <div className="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                        <span className="text-primary fs-4">{skill.icon}</span>
+                      </div>
+                      <div>
+                        <h5 className="mb-0">{skill.name}</h5>
+                        <span className="text-primary fw-bold">{skill.level}%</span>
+                      </div>
+                    </div>
+                    <ProgressBar now={skill.level} className="mt-2" />
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </section>
+      </AnimatedSection>
+ 
+      {/* ===== About Section ===== */}
+      <AnimatedSection delay={0.4}>
+        <section className="py-5 bg-light" id="about">
+          <Container>
+            <Row className="align-items-center">
+              <Col lg={4} className="text-center mb-4 mb-lg-0">
+                <div className="about-image-container">
+                  <img src="/profile.jpg" alt="Shadi Sayed" className="about-img" />
+                </div>
+              </Col>
+              <Col lg={8}>
+                <h2 className="display-5 fw-bold mb-4">About Me</h2>
+                <div className="about-content">
+                  <p className="lead mb-4">
+                    Hello! I'm <strong>Shadi Sayed</strong>, a passionate Flutter developer with <strong>{projects.length}+ production apps</strong> spanning finance, e-commerce, social media, and more.
+                  </p>
+                  <p className="mb-4">
+                    I specialize in <strong>BLoC architecture, Firebase integration, complex state management, and secure app development</strong>. My apps feature bilingual support, real-time sync, and production-ready code.
+                  </p>
+                  <div className="row mt-4">
+                    <div className="col-md-6">
+                      <ul className="list-unstyled">
+                        <li className="mb-2"><FaCode className="text-primary me-2" /> <strong>Specialization:</strong> Flutter & Firebase</li>
+                        <li className="mb-2"><FaMobileAlt className="text-primary me-2" /> <strong>Platforms:</strong> iOS & Android</li>
+                      </ul>
+                    </div>
+                    <div className="col-md-6">
+                      <ul className="list-unstyled">
+                        <li className="mb-2"><FaServer className="text-primary me-2" /> <strong>Backend:</strong> Firebase, REST APIs</li>
+                        <li className="mb-2"><FaPalette className="text-primary me-2" /> <strong>State:</strong> BLoC, Provider, GetX</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      </AnimatedSection>
+      
+      {/* Contact Form */}
+      <AnimatedSection delay={0.5}>
+        <ContactForm />
+      </AnimatedSection>
+ 
+      {/* ===== Footer ===== */}
+      <footer className="footer" id="contact">
+        <Container>
+          <Row className="align-items-center">
+            <Col lg={6} className="mb-4 mb-lg-0">
+              <h3 className="text-white mb-3">Let's Build Something Amazing</h3>
+              <p className="text-light mb-4">{projects.length}+ production Flutter apps ready to work for you!</p>
+              <Button variant="primary" size="lg" className="btn-custom" href="#contact">Start a Project</Button>
+            </Col>
+            <Col lg={6} className="text-lg-end">
+              <div className="social-icons mb-4">
+                <a href="https://github.com" className="text-white" target="_blank" rel="noreferrer"><FaGithub size={20} /></a>
+                <a href="https://linkedin.com" className="text-white mx-3" target="_blank" rel="noreferrer"><FaLinkedin size={20} /></a>
+                <a href="mailto:hello@example.com" className="text-white"><FaEnvelope size={20} /></a>
+              </div>
+              <p className="text-light mb-0">© {new Date().getFullYear()} Shadi Sayed - {projects.length}+ Flutter Apps</p>
+            </Col>
+          </Row>
+        </Container>
+      </footer>
+    </div>
+  );
+}
+
+export default App;----------------------------- 
+FILE: E:\My Mob Projects\3 Flutter abo hamza\flutter-porfolio\src\pages\ProjectDetail.js 
+----------------------------- 
+// src/pages/ProjectDetail.js
+import React, { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Badge,
+  Card,
+  Tab,
+  Tabs,
+  ProgressBar,
+  Navbar,
+  Nav,
+  Modal,
+} from "react-bootstrap";
+import { motion } from "framer-motion";
+import {
+  FaGithub,
+  FaArrowLeft,
+  FaExternalLinkAlt,
+  FaChartLine,
+  FaDatabase,
+  FaStar,
+  FaDownload,
+  FaUsers,
+  FaBolt,
+  FaShieldAlt,
+  FaClock,
+  FaCheckCircle,
+  FaUserTie,
+  FaLayerGroup,
+  FaSun,
+  FaMoon,
+  FaCode,
+} from "react-icons/fa";
+import { getProjectById } from "../data/projects";
+import AnimatedSection from "../components/AnimatedSection";
+import ThemeToggle from "../components/ThemeToggle";
+import { useTheme } from "../context/ThemeContext";
+
+const ProjectDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [project, setProject] = useState(null);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [loading, setLoading] = useState(true);
+  const { isDarkMode } = useTheme();
+
+  // State for Bootstrap Modal (image zoom)
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  useEffect(() => {
+    setLoading(true);
+    const foundProject = getProjectById(parseInt(id));
+    if (foundProject) {
+      setProject(foundProject);
+    } else {
+      navigate("/");
+    }
+    setTimeout(() => setLoading(false), 300);
+  }, [id, navigate]);
+
+  // Helper function to render complexity stars
+  const renderComplexity = (level) => {
+    return "⭐".repeat(level) + "☆".repeat(5 - level);
+  };
+
+  if (loading) {
+    return (
+      <Container className="py-5 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className={`project-detail-page ${isDarkMode ? 'dark-mode-active' : ''}`}
+        >
+          <div
+            className="spinner-border text-primary"
+            role="status"
+            style={{ width: "3rem", height: "3rem" }}
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p className="mt-3" style={{ color: isDarkMode ? '#e2e8f0' : '#64748b' }}>
+            Loading project details...
+          </p>
+        </motion.div>
+      </Container>
+    );
+  }
+
+  if (!project) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`project-detail-page ${isDarkMode ? 'dark-mode-active' : ''}`}
+    >
+      {/* Navigation Bar */}
+      <Navbar expand="lg" className="navbar" sticky="top">
+        <Container>
+          <Navbar.Brand href="/" className="navbar-brand">
+            <FaGithub className="me-2" />
+            Shadi Dev Portfolio
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-nav" />
+          <Navbar.Collapse id="navbar-nav">
+            <Nav className="ms-auto align-items-center">
+              <Nav.Link href="/#home">Home</Nav.Link>
+              <Nav.Link href="/#projects">Projects</Nav.Link>
+              <Nav.Link href="/#skills">Skills</Nav.Link>
+              <Nav.Link href="/#about">About</Nav.Link>
+              <Nav.Link href="/#contact">Contact</Nav.Link>
+              <div className="ms-3">
+                <ThemeToggle />
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Header with Gradient */}
+      <div
+        className="project-detail-header text-white py-5"
+        style={{ background: project.gradient }}
+      >
+        <Container>
+          <Row className="align-items-center">
+            <Col>
+              <Link to="/#projects" className="back-link text-white text-decoration-none">
+                <FaArrowLeft className="me-2" />
+                Back to Portfolio
+              </Link>
+            </Col>
+            <Col className="text-end">
+              <motion.h1
+                className="project-title fw-bold mb-2"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                {project.title}
+              </motion.h1>
+              <motion.p
+                className="project-subtitle fs-5 opacity-90"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                {project.shortDesc}
+              </motion.p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      <Container className="py-5">
+        <Row>
+          {/* Main Content */}
+          <Col lg={8}>
+            {/* Stats Cards */}
+            <AnimatedSection delay={0.1}>
+              <Row className="g-3 mb-4">
+                <Col md={3} xs={6}>
+                  <Card className="stat-card h-100 shadow-sm">
+                    <Card.Body className="text-center">
+                      <FaStar className="stat-icon text-warning fs-2" />
+                      <h3 className="stat-value mt-2" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        {project.metrics?.rating || "4.8"}
+                      </h3>
+                      <p className="stat-label small" style={{ color: isDarkMode ? '#cbd5e1' : '#64748b' }}>
+                        Rating
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+                <Col md={3} xs={6}>
+                  <Card className="stat-card h-100 shadow-sm">
+                    <Card.Body className="text-center">
+                      <FaDownload className="stat-icon text-primary fs-2" />
+                      <h3 className="stat-value mt-2" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        {project.metrics?.downloads || "10k+"}
+                      </h3>
+                      <p className="stat-label small" style={{ color: isDarkMode ? '#cbd5e1' : '#64748b' }}>
+                        Downloads
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+                <Col md={3} xs={6}>
+                  <Card className="stat-card h-100 shadow-sm">
+                    <Card.Body className="text-center">
+                      <FaUsers className="stat-icon text-success fs-2" />
+                      <h3 className="stat-value mt-2" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        {project.metrics?.users || "500+"}
+                      </h3>
+                      <p className="stat-label small" style={{ color: isDarkMode ? '#cbd5e1' : '#64748b' }}>
+                        Active Users
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+                <Col md={3} xs={6}>
+                  <Card className="stat-card h-100 shadow-sm">
+                    <Card.Body className="text-center">
+                      <FaBolt className="stat-icon text-info fs-2" />
+                      <h3 className="stat-value mt-2" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        {project.metrics?.performance || "99.9%"}
+                      </h3>
+                      <p className="stat-label small" style={{ color: isDarkMode ? '#cbd5e1' : '#64748b' }}>
+                        Performance
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </AnimatedSection>
+
+            {/* Tabs */}
+            <AnimatedSection delay={0.2}>
+              <Card className="detail-card shadow mb-4">
+                <Tabs
+                  activeKey={activeTab}
+                  onSelect={(k) => setActiveTab(k)}
+                  className="border-bottom"
+                  fill
+                >
+                  <Tab eventKey="overview" title="Overview">
+                    <div className="p-4">
+                      <h4 className="mb-3" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        Project Overview
+                      </h4>
+                      <p className="lead mb-4" style={{ color: isDarkMode ? '#e2e8f0' : '#475569' }}>
+                        {project.fullDesc || project.shortDesc}
+                      </p>
+
+                      <h5 className="mb-3" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        Key Features
+                      </h5>
+                      <Row className="g-3">
+                        {project.features?.map((feature, index) => (
+                          <Col md={6} key={index}>
+                            <div className="d-flex align-items-center p-3 rounded" style={{ background: isDarkMode ? '#334155' : '#f1f5f9' }}>
+                              <FaCheckCircle className="text-success me-3 fs-4" />
+                              <span style={{ color: isDarkMode ? '#e2e8f0' : '#475569' }}>{feature}</span>
+                            </div>
+                          </Col>
+                        ))}
+                      </Row>
+                    </div>
+                  </Tab>
+
+                  <Tab eventKey="tech" title="Technical">
+                    <div className="p-4">
+                      <h4 className="mb-4" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        Technical Implementation
+                      </h4>
+
+                      {project.architecture && (
+                        <div className="mb-4">
+                          <h5 style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                            <FaLayerGroup className="me-2" /> Architecture
+                          </h5>
+                          <Row className="g-3">
+                            <Col md={6}>
+                              <Card className="border-0" style={{ background: isDarkMode ? '#1e293b' : '#ffffff' }}>
+                                <Card.Body>
+                                  <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>Pattern</small>
+                                  <h6 style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
+                                    {project.architecture.pattern}
+                                  </h6>
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                            <Col md={6}>
+                              <Card className="border-0" style={{ background: isDarkMode ? '#1e293b' : '#ffffff' }}>
+                                <Card.Body>
+                                  <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>State Management</small>
+                                  <h6 style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
+                                    {project.architecture.stateManagement}
+                                  </h6>
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          </Row>
+                        </div>
+                      )}
+
+                      <h5 className="mb-3" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        <FaCode className="me-2" /> Technologies Used
+                      </h5>
+                      <div className="d-flex flex-wrap gap-2">
+                        {project.technologies?.map((tech, i) => (
+                          <Badge key={i} bg="primary" className="px-3 py-2">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </Tab>
+
+                  <Tab eventKey="challenges" title="Challenges">
+                    <div className="p-4">
+                      <h4 className="mb-4" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                        Challenges & Solutions
+                      </h4>
+                      {project.technicalChallenges?.map((item, index) => (
+                        <Card key={index} className="mb-3 border-0 shadow-sm" style={{ background: isDarkMode ? '#1e293b' : '#ffffff' }}>
+                          <Card.Body>
+                            <Row>
+                              <Col lg={5} className="border-end border-danger pe-4">
+                                <h6 className="text-danger">Challenge</h6>
+                                <p className="mb-0" style={{ color: isDarkMode ? '#e2e8f0' : '#475569' }}>
+                                  {item.challenge}
+                                </p>
+                              </Col>
+                              <Col lg={7} className="ps-4">
+                                <h6 className="text-success">Solution</h6>
+                                <p className="mb-2" style={{ color: isDarkMode ? '#e2e8f0' : '#475569' }}>
+                                  {item.solution}
+                                </p>
+                                {item.impact && (
+                                  <small className="text-info fst-italic">
+                                    Impact: {item.impact}
+                                  </small>
+                                )}
+                              </Col>
+                            </Row>
+                          </Card.Body>
+                        </Card>
+                      ))}
+                    </div>
+                  </Tab>
+                </Tabs>
+              </Card>
+            </AnimatedSection>
+
+            {/* Screenshots Section */}
+            <AnimatedSection delay={0.3}>
+              <Card className="shadow mb-4" style={{ background: isDarkMode ? '#1e293b' : '#ffffff' }}>
+                <Card.Header className="bg-primary text-white">
+                  <h5 className="mb-0">App Screenshots</h5>
+                </Card.Header>
+                <Card.Body>
+                  <Row className="g-3">
+                    {project.screens && project.screens.length > 0 ? (
+                      project.screens.map((screen, index) => (
+                        <Col xs={6} md={4} lg={3} key={index}>
+                          <motion.div
+                            className="screenshot-wrapper rounded overflow-hidden shadow cursor-pointer"
+                            whileHover={{ scale: 1.06, y: -8 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                            onClick={() => {
+                              setSelectedImage(screen);
+                              setShowModal(true);
+                            }}
+                          >
+                            <img
+                              src={screen}
+                              alt={`${project.title} screenshot ${index + 1}`}
+                              className="img-fluid w-100"
+                              style={{
+                                height: "220px",
+                                objectFit: "cover",
+                                objectPosition: "top",
+                                cursor: "pointer",
+                              }}
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src =
+                                  "https://via.placeholder.com/400x220.png?text=Image+Not+Found";
+                              }}
+                            />
+                          </motion.div>
+                        </Col>
+                      ))
+                    ) : (
+                      <Col>
+                        <p className="text-center text-muted py-5">
+                          No screenshots available yet
+                        </p>
+                      </Col>
+                    )}
+                  </Row>
+                </Card.Body>
+              </Card>
+
+              {/* Bootstrap Modal for enlarged screenshot */}
+              <Modal
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                size="xl"
+                centered
+                dialogClassName="image-modal"
+              >
+                <Modal.Header closeButton className={isDarkMode ? 'bg-dark text-white border-0' : ''}>
+                  <Modal.Title>{project.title} - Screenshot</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className={isDarkMode ? 'bg-dark text-center' : 'text-center'}>
+                  <img
+                    src={selectedImage}
+                    alt="Enlarged screenshot"
+                    className="img-fluid"
+                    style={{
+                      maxHeight: '80vh',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </Modal.Body>
+                <Modal.Footer className={isDarkMode ? 'bg-dark border-0' : ''}>
+                  <Button variant="secondary" onClick={() => setShowModal(false)}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </AnimatedSection>
+          </Col>
+
+          {/* Sidebar */}
+          <Col lg={4}>
+            <AnimatedSection delay={0.3}>
+              <Card className="shadow mb-4" style={{ background: isDarkMode ? '#1e293b' : '#ffffff' }}>
+                <Card.Body>
+                  <h5 className="mb-4" style={{ color: isDarkMode ? '#ffffff' : '#1e293b' }}>
+                    Project Information
+                  </h5>
+
+                  <div className="mb-3">
+                    <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>My Role</small>
+                    <p className="fw-bold mb-0" style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
+                      {project.role}
+                    </p>
+                  </div>
+
+                  {project.timeline && (
+                    <div className="mb-3">
+                      <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>Timeline</small>
+                      <p className="fw-bold mb-0" style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
+                        {project.timeline.duration}
+                      </p>
+                      {project.timeline.sprints && (
+                        <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>
+                          {project.timeline.sprints} sprints
+                        </small>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="mb-3">
+                    <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>Complexity</small>
+                    <p className="mb-0" style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
+                      {renderComplexity(project.metrics?.complexity || 4)}
+                    </p>
+                  </div>
+
+                  {project.metrics?.codeCoverage && (
+                    <div className="mb-4">
+                      <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>Code Coverage</small>
+                      <ProgressBar
+                        now={parseInt(project.metrics.codeCoverage)}
+                        variant="success"
+                        className="mt-1"
+                      />
+                      <small style={{ color: isDarkMode ? '#94a3b8' : '#64748b' }}>
+                        {project.metrics.codeCoverage}
+                      </small>
+                    </div>
+                  )}
+
+                  <div className="d-grid gap-2">
+                    {project.githubUrl && (
+                      <Button
+                        variant="outline-dark"
+                        href={project.githubUrl}
+                        target="_blank"
+                      >
+                        <FaGithub className="me-2" />
+                        View Source Code
+                      </Button>
+                    )}
+                    {project.liveDemo && (
+                      <Button variant="primary" href={project.liveDemo} target="_blank">
+                        <FaExternalLinkAlt className="me-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                  </div>
+                </Card.Body>
+              </Card>
+            </AnimatedSection>
+          </Col>
+        </Row>
+
+        {/* Back / Contact buttons */}
+        <div className="text-center mt-5">
+          <Button
+            variant="outline-primary"
+            size="lg"
+            className="me-3"
+            onClick={() => navigate("/#projects")}
+          >
+            <FaArrowLeft className="me-2" />
+            Back to All Projects
+          </Button>
+          <Button variant="success" size="lg" href="#contact">
+            Let's Work Together
+          </Button>
+        </div>
+      </Container>
+    </motion.div>
+  );
+};
+
+export default ProjectDetail;
+=========================
+
+{package.json}  : 
+{
+  "name": "flutter-porfolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@hookform/resolvers": "^5.2.2",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.8",
+    "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.23.26",
+    "react": "^19.2.3",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.3",
+    "react-hook-form": "^7.69.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.11.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.7.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+
+}
+ 
+
+
